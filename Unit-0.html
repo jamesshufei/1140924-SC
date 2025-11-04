@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>資通安全概論 - 單元說明</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f6fbff;
+      color: #215ca0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 24px #b3d6f7;
+      margin: 32px auto 0 auto;
+      padding: 24px 36px 48px 36px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.9rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #215ca0;
+      margin-bottom: 22px;
+    }
+    .back-btn {
+      display: block;
+      margin: 0 auto 22px auto;
+      background: linear-gradient(135deg,#004d91,#3383e8);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 36px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      box-shadow: 0 2px 14px #c1dafb;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .back-btn:hover {
+      background: linear-gradient(135deg,#3383e8,#004d91);
+      transform: scale(1.04);
+    }
+    .accordion-item {
+      border-bottom: 1px solid #e1e4f0;
+    }
+    .accordion-header {
+      font-size: 1.16rem;
+      font-weight: bold;
+      color: #247be7;
+      padding: 18px 14px;
+      margin: 0;
+      cursor: pointer;
+      background: linear-gradient(90deg,#f1f7ff,#e1eaff);
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+    .accordion-header:hover {
+      background: linear-gradient(90deg,#c1dafb,#e1eaff);
+    }
+    .accordion-panel {
+      padding: 13px 28px 20px 23px;
+      font-size: 1.05rem;
+      display: none;
+      background: #f6fbff;
+      border-radius: 0 0 10px 10px;
+      animation: fadein 0.3s;
+    }
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @media (max-width: 700px) {
+      .container {
+        padding: 10px 2vw 18px 2vw;
+        margin-top: 10px;
+      }
+      h1 {
+        font-size: 1.1rem;
+      }
+      .back-btn {
+        width: 100%;
+        font-size: 1rem;
+        padding: 11px 0;
+      }
+      .accordion-header {
+        font-size: 1rem;
+        padding: 13px 6px;
+      }
+      .accordion-panel {
+        font-size: 0.98rem;
+        padding: 11px 11px 14px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="back-btn" onclick="location.href='index.html'">回主選單</button>
+    <h1>資通安全概論單元說明</h1>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="togglePanel(this)">第1單元：資通安全基本概念</div>
+        <div class="accordion-panel">
+          <b>單元說明：</b>介紹資通安全基本定義、資安三要素（CIA）、資安威脅類型。<br>
+          <b>學習目標：</b>理解資安重要性與基本架構。<br>
+          <b>主要內容：</b>資安定義、三要素、資安威脅類型說明與案例。
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="togglePanel(this)">第2單元：資通安全相關法規</div>
+        <div class="accordion-panel">
+          <b>單元說明：</b>解析台灣資安相關法規（資安法）、政策架構與標準。<br>
+          <b>學習目標：</b>瞭解台灣資安法規基礎與政策架構。<br>
+          <b>主要內容：</b>資安法概述、政策標準、法規案例分析。
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="togglePanel(this)">第3單元：資通安全風險管理</div>
+        <div class="accordion-panel">
+          <b>單元說明：</b>介紹風險評估流程、常用評量方法及資產盤點。<br>
+          <b>學習目標：</b>學會資安風險評估基本手法。<br>
+          <b>主要內容：</b>風險評估流程、評量方法、資產盤點實作。
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="togglePanel(this)">第4單元：資通安全管理面暨認知與訓練</div>
+        <div class="accordion-panel">
+          <b>單元說明：</b>探討各種身分驗證、存取控制方式、密碼管理。<br>
+          <b>學習目標：</b>掌握資安管理與培訓核心。<br>
+          <b>主要內容：</b>認證機制、存取控制、密碼政策案例。
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="togglePanel(this)">第5單元：資通系統防護控制措施</div>
+        <div class="accordion-panel">
+          <b>單元說明：</b>說明常用網路防護措施、防火牆、入侵偵測等工具。<br>
+          <b>學習目標：</b>瞭解各種防護技術與操作。<br>
+          <b>主要內容：</b>網路防護措施、防火牆、IDS工具介紹。
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="togglePanel(this)">第6單元：資通安全防護及偵測</div>
+        <div class="accordion-panel">
+          <b>單元說明：</b>解析惡意程式種類、攻擊手法及防護技術。<br>
+          <b>學習目標：</b>識別資安攻擊及防護對策。<br>
+          <b>主要內容：</b>惡意程式、攻擊技術與資安防護。
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="togglePanel(this)">第7單元：安全性檢測及資通安全健診</div>
+        <div class="accordion-panel">
+          <b>單元說明：</b>介紹弱點掃描、滲透測試等安全性檢測流程與相關工具，瞭解如何進行系統安全健診與漏洞評估。<br>
+          <b>學習目標：</b>具備執行安全性檢測與健診的基礎能力，能辨識與評估資訊系統潛在風險。<br>
+          <b>主要內容：</b>弱點掃描原理與流程、滲透測試步驟、常用檢測工具操作、健診報告解讀與改善建議。
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="togglePanel(this)">第8單元：資訊委外安全管理</div>
+        <div class="accordion-panel">
+          <b>單元說明：</b>說明委外資訊服務的資安管理需求、風險控管機制與監督稽核方法。<br>
+          <b>學習目標：</b>了解委外服務時資訊安全的重要性，具備規劃委外資安管理及監督能力。<br>
+          <b>主要內容：</b>委外合約資安條款、供應商資安管理、外包監督與稽核作業、外部風險控管措施。
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="togglePanel(this)">第9單元：資通安全事件通報及應變</div>
+        <div class="accordion-panel">
+          <b>單元說明：</b>強調資安事件通報流程、應變計畫實作與後續修復及防範。<br>
+          <b>學習目標：</b>建構資安事件即時通報與有效應變的實務能力。<br>
+          <b>主要內容：</b>事件類型分類、通報流程設計、事件調查與紀錄、應變計畫建立、事後復原及改善措施。
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function togglePanel(header) {
+      var panel = header.nextElementSibling;
+      var showing = panel.style.display === 'block';
+      document.querySelectorAll('.accordion-panel').forEach(function(p) { p.style.display = 'none'; });
+      panel.style.display = showing ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>

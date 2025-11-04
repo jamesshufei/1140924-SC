@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資通安全概論第7單元自我評量測驗</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .quiz-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .question-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .question-type {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #2c3e50;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: translateY(-1px);
+        }
+
+        .option input {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .option.correct {
+            border-color: #4CAF50;
+            background: #e8f5e8;
+        }
+
+        .option.incorrect {
+            border-color: #f44336;
+            background: #ffebee;
+        }
+
+        .option.user-selected {
+            border-color: #2196F3;
+            background: #e3f2fd;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .explanation {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .explanation h4 {
+            color: #856404;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .explanation p {
+            color: #533d03;
+            line-height: 1.6;
+        }
+
+        .history-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .history-panel.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .history-item {
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .history-item.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .history-item.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .history-item.unanswered {
+            background: #e2e3e5;
+            color: #383d41;
+            border: 2px solid #d6d8db;
+        }
+
+        .history-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+        }
+
+        .toast.error {
+            background: linear-gradient(135deg, #f44336, #ff7043);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.4rem;
+            }
+
+            .quiz-card {
+                padding: 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        .final-results {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .final-results h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .score-display.excellent {
+            color: #4CAF50;
+        }
+
+        .score-display.good {
+            color: #FF9800;
+        }
+
+        .score-display.poor {
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>資通安全概論 第7單元自我評量測驗</h1>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="stats">
+                <span>題目 <span id="currentNum">1</span> / <span id="totalNum">86</span></span>
+                <span>答對：<span id="correctCount">0</span></span>
+                <span>答錯：<span id="incorrectCount">0</span></span>
+                <span>準確率：<span id="accuracy">0%</span></span>
+            </div>
+        </div>
+
+        <div class="quiz-card" id="quizCard">
+            </div>
+
+        <div class="history-panel" id="historyPanel">
+            <h3>答題記錄</h3>
+            <div class="history-grid" id="historyGrid">
+                </div>
+        </div>
+
+        <div class="buttons">
+            <button class="btn btn-secondary" onclick="toggleHistory()">查看記錄</button>
+            <button class="btn btn-secondary" onclick="prevQuestion()" id="prevBtn">上一題</button>
+            <button class="btn btn-secondary" onclick="nextQuestion()" id="nextBtn">下一題</button>
+            <button class="btn btn-success" onclick="restartQuiz()">重新開始</button>
+
+<a class="back-btn" href="index.html" style="
+    display: inline-block;
+    font-size: 1rem;
+    border-radius: 8px;
+    background: #FFF;
+    color: #4763fa;
+    border: 2px solid #4763fa;
+    padding: 8px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 8px;
+    box-shadow: 0 1px 6px rgba(80,80,120,0.08);
+    transition: background 0.2s, color 0.2s;
+    text-align: center;
+  "
+  onmouseover="this.style.background='#4763fa';this.style.color='#fff';"
+  onmouseout="this.style.background='#fff';this.style.color='#4763fa';"
+  >回主頁</a>
+
+
+
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // 所有題目數據
+        const questions = [
+            {
+                id: 1,
+                question: "根據教材，安全性檢測包含哪兩個主要的項目？",
+                type: "single",
+                options: [
+                    "風險評估與資產盤點",
+                    "弱點掃描與滲透測試",
+                    "網路監控與日誌分析",
+                    "實體安全與環境控制"
+                ],
+                correct: [1],
+                explanation: "教材在第7單元1-1節明確指出，安全性檢測主要包含「弱點掃描」與「滲透測試」兩項。"
+            },
+            {
+                id: 2,
+                question: "根據教材，A級機關需要多久進行一次弱點掃描？",
+                type: "single",
+                options: [
+                    "每年1次",
+                    "每年2次",
+                    "每2年1次",
+                    "無要求"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-1節的表格顯示，A級機關的弱點掃描頻率為每年2次。"
+            },
+            {
+                id: 3,
+                question: "根據教材，C級機關需要多久進行一次滲透測試？",
+                type: "single",
+                options: [
+                    "每年1次",
+                    "每2年1次",
+                    "無要求",
+                    "每年2次"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-1節的表格指出，C級機關的滲透測試頻率為每2年1次。"
+            },
+            {
+                id: 4,
+                question: "根據教材內容，關於「安全性檢測」的敘述，下列何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "A級機關每年需進行1次滲透測試，以確保資安防護最高水準。",
+                    "D級與E級機關由於資安責任等級最低，因此法規強制要求無需進行弱點掃描或滲透測試。",
+                    "弱點掃描是一種自動化、非侵入式的檢測方式。",
+                    "滲透測試是模擬駭客攻擊手法，目的是驗證系統安全防護措施的有效性。"
+                ],
+                correct: [0, 2, 3],
+                explanation: "根據教材，A級機關要求每年進行1次滲透測試。弱點掃描是自動化的非侵入性檢測。滲透測試是模擬駭客攻擊手法，旨在驗證防護措施的有效性。D級與E級機關雖然法規無強制要求，但教材建議仍應自行評估風險後決定是否執行。"
+            },
+            {
+                id: 5,
+                question: "根據教材，弱點掃描的主要功能是什麼？",
+                type: "single",
+                options: [
+                    "模擬駭客攻擊，以評估系統防護能力",
+                    "針對特定漏洞進行深入利用",
+                    "自動化掃描系統，找出已知漏洞及錯誤組態",
+                    "僅對網路設備進行檢測"
+                ],
+                correct: [2],
+                explanation: "教材在第7單元1-2節提到，弱點掃描是利用自動化工具，找出系統、服務、設備中已知的弱點與錯誤設定。"
+            },
+            {
+                id: 6,
+                question: "關於弱點掃描的目的與特性，下列敘述何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "弱點掃描的主要優點是速度快、成本低，且能對「零時差漏洞」進行偵測。",
+                    "掃描結果能作為高階主管或資安管理單位進行資安決策的重要參考基準。",
+                    "弱點掃描是資安防護的基礎與第一道防線，它與滲透測試互補，以構築更全面的防護。",
+                    "弱點掃描的一項重要目的，是透過後續的複掃來確認已修補的弱點是否確實被排除。"
+                ],
+                correct: [1, 2, 3],
+                explanation: "弱點掃描無法偵測到「零時差漏洞」，因此選項A錯誤。掃描結果可作為管理依據與資安決策參考，選項B正確。教材強調弱點掃描是資安防護的「基礎」和「第一道防線」，選項C正確。弱點掃描也用於驗證弱點是否已被成功排除，選項D正確。"
+            },
+            {
+                id: 7,
+                question: "在「主機系統弱點掃描」的檢查項目中，通常會包含哪些内容？(複選)",
+                type: "multiple",
+                options: [
+                    "針對作業系統未修正的已知弱點進行掃描。",
+                    "透過字典或暴力破解方式測試帳號密碼的安全性。",
+                    "檢查主機上是否安裝了不必要的服務或開放了不必要的通訊埠。",
+                    "掃描主機以偵測是否有後門程式或木馬的存在。"
+                ],
+                correct: [0, 1, 2, 3],
+                explanation: "根據教材，主機系統弱點掃描的檢查項目包含作業系統未修正的弱點、帳號密碼破解測試、系統不安全設定與通訊埠掃描，以及木馬後門程式掃描。"
+            },
+            {
+                id: 8,
+                question: "根據教材中 OWASP Top 10 2021的內容，下列哪些項目屬於應用程式安全檢測的範疇？(複選)",
+                type: "multiple",
+                options: [
+                    "權限控制失效(Broken Access Control)",
+                    "加密失敗(Cryptographic Failures)",
+                    "注入式攻擊(Injection)",
+                    "安全設定錯誤(Security Misconfiguration)"
+                ],
+                correct: [0, 1, 2, 3],
+                explanation: "教材頁面列出了 OWASP Top 10 2021的所有十個項目，其中(A)、(B)、(C)、(D)皆為列出的項目。"
+            },
+            {
+                id: 9,
+                question: "關於弱點掃描的流程，下列敘述何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "弱點掃描是一個持續改進的循環過程，類似PDCA循環。",
+                    "「確認並修復弱點」是流程中最重要的環節，需強調其執行力。",
+                    "執行複測的主要目的是為了避免「假修復」，確保修補措施確實被排除。",
+                    "在「確認掃描需求」階段，必須獲得合法授權並知會相關單位，以避免影響業務。"
+                ],
+                correct: [0, 1, 2, 3],
+                explanation: "教材明確指出弱點掃描是PDCA循環，修復弱點是最重要的環節，複測的目的是避免假修復，而確認掃描需求則需要合法授權與知會相關單位。"
+            },
+            {
+                id: 10,
+                question: "在執行弱點掃描服務時，服務提供者應採取的具體步驟包含哪些？(複選)",
+                type: "multiple",
+                options: [
+                    "事前與目標組織充分溝通，以了解其網路架構和系統環境。",
+                    "在每次掃描前，將掃描工具的弱點資料庫更新至最新版本。",
+                    "應安排在非公務時段(例如夜間或週末)執行初次掃描。",
+                    "在發現弱點後，應協助組織理解並提供具體的修補建議。"
+                ],
+                correct: [0, 1, 2, 3],
+                explanation: "教材詳細列出了弱點掃描服務的步驟，包含事前溝通與了解、工具準備(更新資料庫)、執行初掃(時間安排)，以及協助修補與追蹤。"
+            },
+            {
+                id: 11,
+                question: "根據教材，一份完整的弱點掃描報告，通常應包含哪些内容？(複選)",
+                type: "multiple",
+                options: [
+                    "執行計畫說明，如掃描期間、範圍、人員與工具。",
+                    "詳細弱點清單，並標示弱點的風險等級與修補建議。",
+                    "弱點排除清單，說明因特定原因暫不修補的弱點。",
+                    "複掃報告的差異化分析，展示修復前後的比較。"
+                ],
+                correct: [0, 1, 2, 3],
+                explanation: "教材列出了弱點掃描報告應包含的內容，包括執行計畫說明、詳細弱點清單、弱點排除清單以及複掃報告的差異化分析。"
+            },
+            {
+                id: 12,
+                question: "在規劃與執行弱點掃描時，應考量的關鍵因素為何？(複選)",
+                type: "multiple",
+                options: [
+                    "掃描的發起位置，是從內部還是外部進行。",
+                    "是否應具備登錄權限，以進行更深入的測試。",
+                    "選擇侵入式或非侵入式的掃描方法。",
+                    "應選擇委外執行還是由機關IT資安部門自行執行。"
+                ],
+                correct: [0, 1, 2, 3],
+                explanation: "教材明確列出弱點掃描的考量因素，包含內部/外部掃描、有/無登錄權限、侵入式/非侵入式，以及委外/自行執行。"
+            },
+            {
+                id: 13,
+                question: "關於「內部掃描」與「外部掃描」的敘述，下列何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "外部掃描是模擬外部駭客的攻擊，主要檢測對外開放的服務。",
+                    "內部掃描是模擬內部人員或已入侵電腦的行為。",
+                    "外部掃描通常會從組織的防火牆內部發起。",
+                    "兩種掃描方式互補，全面性的資安防護應同時包含兩者。"
+                ],
+                correct: [0, 1, 3],
+                explanation: "外部掃描是從組織防火牆「外部」發起，因此選項C錯誤。而選項A、B、D皆符合教材對內部與外部掃描的定義與關係描述。"
+            },
+            {
+                id: 14,
+                question: "相較於「無登錄權限」掃描，「有登錄權限」掃描的優勢有哪些？(複選)",
+                type: "multiple",
+                options: [
+                    "能夠深入檢查系統內部配置與應用程式的登入後功能。",
+                    "掃描結果更為全面且準確。",
+                    "能夠觸及更多的程式碼路徑。",
+                    "能夠模擬外部攻擊者成功入侵後進行的內部探測。"
+                ],
+                correct: [0, 1, 2, 3],
+                explanation: "教材指出，有登錄權限掃描能深入檢查內部配置與功能、結果更全面、能觸及更多程式碼路徑，並能模擬內部或已入侵人員的行為。"
+            },
+            {
+                id: 15,
+                question: "關於「侵入式」與「非侵入式」弱點測試的敘述，下列何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "非侵入式測試對系統沒有負面影響，適合在線上生產環境進行。",
+                    "弱點掃描主要採用非侵入式，而滲透測試則較傾向使用侵入式手段。",
+                    "侵入式測試可能導致系統不穩定或資料損壞，因此需謹慎授權。",
+                    "侵入式測試通常用於驗證漏洞的實際可利用性。"
+                ],
+                correct: [0, 1, 2, 3],
+                explanation: "教材說明非侵入式測試對系統無負面影響，適用於生產環境。弱點掃描主要採用非侵入式，而滲透測試則偏向侵入式。侵入式測試因模擬攻擊，故有造成系統不穩定或破壞的風險，需要謹慎授權。"
+            },
+            {
+                id: 16,
+                question: "機關在決定「自行執行」弱點掃描時，需要考慮哪些主要因素？(複選)",
+                type: "multiple",
+                options: [
+                    "弱點掃描軟體的購置與持續更新費用。",
+                    "是否具備專業的弱點掃描人才。",
+                    "委外合約的彈性程度。",
+                    "內部執行的反應速度與資料保密性。"
+                ],
+                correct: [0, 1, 3],
+                explanation: "教材指出機關自行執行弱點掃描時，需考量軟體購置與更新、專業人才的議題。而反應速度與資料保密性是自行執行的優勢。委外合約的彈性是委外的考量因素，與自行執行無關，因此選項C不正確。"
+            },
+            {
+                id: 17,
+                question: "弱點掃描與滲透測試的顯著差異在於?",
+                type: "single",
+                options: [
+                    "弱點掃描主要針對網路設備，而滲透測試針對伺服器",
+                    "弱點掃描是自動化、非侵入式，而滲透測試是人工、侵入式",
+                    "弱點掃描需要耗費更多時間與人力",
+                    "弱點掃描可以證明漏洞的存在，但滲透測試不能"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-1節與1-3節對兩者進行了比較，說明弱點掃描是自動化工具的非侵入性檢測，而滲透測試則是人工模擬攻擊的侵入性檢測。"
+            },
+            {
+                id: 18,
+                question: "下列何者不屬於教材中提到的，進行滲透測試時可能需要準備的資料？",
+                type: "single",
+                options: [
+                    "系統架構圖",
+                    "設備IP位址列表",
+                    "所有使用者的帳號密碼",
+                    "相關服務及程式列表"
+                ],
+                correct: [2],
+                explanation: "滲透測試應遵循道德規範與範圍限制，提供所有使用者帳號密碼會造成資安風險，因此教材並未提及此為必要準備資料。"
+            },
+            {
+                id: 19,
+                question: "教材提到，滲透測試的主要目的是什麼？",
+                type: "single",
+                options: [
+                    "僅是為了找出系統漏洞",
+                    "為了模擬真實攻擊手法，評估系統防護能力",
+                    "確保系統能隨時可用",
+                    "為了符合法規要求，而進行例行性檢測"
+                ],
+                correct: [1],
+                explanation: "教材在第7單元1-3節強調，滲透測試是透過模擬駭客攻擊手法，以評估系統的防護能力是否足以應對真實威脅。"
+            },
+            {
+                id: 20,
+                question: "下列哪種測試類型，測試人員在執行前對系統一無所知，完全模擬外部駭客的攻擊？",
+                type: "single",
+                options: [
+                    "白箱測試(White-box testing)",
+                    "灰箱測試(Gray-box testing)",
+                    "黑箱測試(Black-box testing)",
+                    "紅隊演練(Red-team exercise)"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-3節將黑箱測試定義為測試人員對目標系統一無所知，從外部發動攻擊，最能模擬駭客行為。"
+            },
+            {
+                id: 21,
+                question: "在滲透測試的「規劃與準備」階段，測試團隊會進行哪些工作？",
+                type: "single",
+                options: [
+                    "入侵並取得系統控制權",
+                    "撰寫並提交詳細的測試報告",
+                    "蒐集資訊、定義測試範圍與規則",
+                    "進行系統弱點修補"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-3節說明，滲透測試流程的第一步是「規劃與準備」，此階段會進行蒐集資訊、定義測試範圍與規則。"
+            },
+            {
+                id: 22,
+                question: "下列何者最能代表「白箱測試」的特點？",
+                type: "single",
+                options: [
+                    "測試人員對系統一無所知，模擬外部駭客",
+                    "測試人員擁有系統的內部原始碼與架構圖",
+                    "測試人員僅擁有部分帳號權限，模擬內部員工",
+                    "測試人員僅針對特定漏洞進行檢測"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-3節將白箱測試定義為測試人員對系統內部運作機制、原始碼與架構有完整了解。"
+            },
+            {
+                id: 23,
+                question: "根據教材，滲透測試的「情蒐與分析」階段主要執行哪些工作？",
+                type: "single",
+                options: [
+                    "模擬駭客攻擊並取得系統權限",
+                    "蒐集目標系統的公開資訊，並分析其可能漏洞",
+                    "撰寫並提交詳細的測試報告",
+                    "修補發現的系統漏洞"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-3節說明，在「情蒐與分析」階段，測試人員會從外部蒐集目標系統的相關資訊，並分析可能存在的漏洞。"
+            },
+            {
+                id: 24,
+                question: "下列哪一種滲透測試類型，其測試人員擁有部分系統的內部資訊，例如帳號密碼或系統架構圖？",
+                type: "single",
+                options: [
+                    "黑箱測試(Black-box testing)",
+                    "灰箱測試(Gray-box testing)",
+                    "白箱測試(White-box testing)",
+                    "紅隊演練(Red-team exercise)"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-3節說明，灰箱測試的測試人員擁有部分系統資訊，模擬具備部分權限的內部人員進行攻擊。"
+            },
+            {
+                id: 25,
+                question: "教材提到，下列哪一項是滲透測試的最終交付成果？",
+                type: "single",
+                options: [
+                    "所有找到的系統漏洞清單",
+                    "一個可立即修補所有漏洞的程式",
+                    "資安事件的應變計畫",
+                    "一份詳細的測試報告與改善建議"
+                ],
+                correct: [3],
+                explanation: "教材第7單元1-3節說明，滲透測試的最終成果是一份詳細的報告，說明攻擊手法、成功利用的漏洞及改善建議。"
+            },
+            {
+                id: 26,
+                question: "根據教材內容，關於「滲透測試」的敘述，下列何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "滲透測試是模擬駭客攻擊手法，以找出系統弱點。",
+                    "滲透測試主要目的是為了證明駭客無法入侵系統。",
+                    "滲透測試是一種自動化、非侵入式的檢測。",
+                    "滲透測試的執行，應以合法授權為前提。"
+                ],
+                correct: [0, 3],
+                explanation: "滲透測試是模擬駭客手法，目的是找出並利用系統弱點。與弱點掃描不同，它屬於侵入式的人工檢測。且教材強調，所有滲透測試都必須在合法授權下進行。"
+            },
+            {
+                id: 27,
+                question: "在滲透測試中，「情蒐與分析」階段可能包含哪些工作？(複選)",
+                type: "multiple",
+                options: [
+                    "撰寫最終的滲透測試報告。",
+                    "收集公開資訊，如電子郵件、IP位址、網域名稱等。",
+                    "分析目標系統是否存在已知漏洞，並進行攻擊路徑規劃。",
+                    "對發現的漏洞進行實際攻擊並取得系統權限。"
+                ],
+                correct: [1, 2],
+                explanation: "情蒐與分析階段是在實際攻擊前進行的，主要目的在於收集資訊並規劃攻擊路徑。選項(A)屬於報告與建議階段，選項(D)屬於入侵與取得權限階段。"
+            },
+            {
+                id: 28,
+                question: "關於滲透測試的「入侵與取得權限」階段，下列何者為正確的敘述？(複選)",
+                type: "multiple",
+                options: [
+                    "測試人員會利用先前情蒐發現的漏洞來嘗試入侵。",
+                    "成功入侵後，測試人員會嘗試提升權限，以取得最高控制權。",
+                    "這個階段的主要目的是為了驗證漏洞的實際可利用性。",
+                    "測試人員在此階段會對所有發現的漏洞進行修補。"
+                ],
+                correct: [0, 1, 2],
+                explanation: "入侵與取得權限階段是滲透測試的核心，其目的是利用漏洞來驗證其可利用性，並在成功入侵後嘗試提權以模擬駭客的後續行為。漏洞修補則是在測試完成後，由機關或委外廠商進行。"
+            },
+            {
+                id: 29,
+                question: "根據教材，滲透測試的最終成果，通常會包含哪些內容？(複選)",
+                type: "multiple",
+                options: [
+                    "針對發現的漏洞，提供詳細的攻擊手法與成功證明。",
+                    "針對每個發現的漏洞，提供具體的修補建議。",
+                    "評估目標資通系統的整體防護能力與風險。",
+                    "預測未來一年可能出現的所有資安威脅。"
+                ],
+                correct: [0, 1, 2],
+                explanation: "滲透測試報告的核心是說明攻擊手法、評估風險，並提供詳細的修補建議。選項(D)的內容超出滲透測試的範圍，不屬於其最終成果。"
+            },
+            {
+                id: 30,
+                question: "關於「滲透測試」的類型，下列敘述何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "黑箱測試最能模擬外部駭客的攻擊手法。",
+                    "白箱測試的測試人員擁有最完整的系統內部資訊。",
+                    "灰箱測試的測試人員擁有部分資訊，能模擬內部人員或已入侵的攻擊者。",
+                    "三種測試類型都能提供全面且深入的檢測結果。"
+                ],
+                correct: [0, 1, 2],
+                explanation: "黑箱測試模擬對系統一無所知的外部駭客。白箱測試擁有所有內部資訊，而灰箱測試則擁有部分資訊。三種測試各有利弊，並非所有類型都能提供全面且深入的結果。"
+            },
+            {
+                id: 31,
+                question: "教材提到，什麼樣的程式碼撰寫缺陷，可能讓攻擊者透過網站的輸入欄位，執行惡意程式碼？",
+                type: "single",
+                options: [
+                    "跨站指令碼（Cross-site Scripting, XSS）",
+                    "SQL Injection",
+                    "緩衝區溢位（Buffer Overflow）",
+                    "惡意程式碼植入（Malware Injection）"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-4節說明，SQL Injection是攻擊者透過輸入欄位，注入惡意SQL指令，來操縱資料庫或執行惡意程式碼的缺陷。"
+            },
+            {
+                id: 32,
+                question: "根據教材，OWASP Top 10 列出的應用程式安全風險，旨在幫助誰了解常見的資安威脅？",
+                type: "single",
+                options: [
+                    "僅限於資安技術專家",
+                    "所有網路使用者",
+                    "應用程式開發者和資安管理者",
+                    "政府政策制定者"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-4節指出，OWASP Top 10是國際性資安組織提供給開發者與管理者，作為了解最常見應用程式風險的參考。"
+            },
+            {
+                id: 33,
+                question: "下列哪種攻擊手法，是利用網站的輸入欄位，將惡意指令碼注入到網頁中，當其他使用者瀏覽該網頁時，惡意程式碼便會在受害者的瀏覽器上執行？",
+                type: "single",
+                options: [
+                    "SQL Injection",
+                    "跨站指令碼（Cross-site Scripting, XSS）",
+                    "阻斷服務攻擊（DDoS）",
+                    "緩衝區溢位（Buffer Overflow）"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-4節將跨站指令碼（XSS）定義為讓攻擊者將惡意腳本注入網頁，並在使用者瀏覽時於其瀏覽器上執行。"
+            },
+            {
+                id: 34,
+                question: "在資通安全中，哪種安全風險是透過欺騙使用者來執行惡意行為，而不是利用技術漏洞？",
+                type: "single",
+                options: [
+                    "SQL Injection",
+                    "社交工程",
+                    "跨站指令碼（XSS）",
+                    "惡意軟體"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-4節說明，社交工程是利用人性的弱點與信任，來欺騙使用者執行惡意行為。"
+            },
+            {
+                id: 35,
+                question: "教材提到，下列哪一項不是防止社交工程的原則？",
+                type: "single",
+                options: [
+                    "在沒有適當認證的情況下不應輕信他人",
+                    "培養凡事「小心求證」的戒心",
+                    "未經確認立即點擊郵件中的連結",
+                    "透過其他管道驗證對方身分"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-4節提到，應培養「小心求證」的戒心，不應未經確認立即點擊可疑連結。"
+            },
+            {
+                id: 36,
+                question: "下列哪種攻擊手法，最可能影響網站的「應用程式」安全？",
+                type: "single",
+                options: [
+                    "SQL Injection",
+                    "阻斷服務攻擊（DDoS）",
+                    "惡意軟體感染",
+                    "實體入侵"
+                ],
+                correct: [0],
+                explanation: "應用程式安全主要與程式碼本身的問題有關，教材中列舉的OWASP Top 10，其中包含的SQL Injection、XSS等都屬於應用程式安全的範疇。"
+            },
+            {
+                id: 37,
+                question: "根據教材中 OWASP Top 10 2021 的內容，下列哪些風險屬於應用程式安全範疇？(複選)",
+                type: "multiple",
+                options: [
+                    "跨站指令碼（XSS），可能導致使用者資料外洩。",
+                    "敏感性資料洩露（Sensitive Data Exposure），例如未加密的個人資料。",
+                    "注入式攻擊（Injection），如 SQL Injection。",
+                    "網站資料庫備份不全。"
+                ],
+                correct: [0, 1, 2],
+                explanation: "教材頁面列出了 OWASP Top 10 2021 的十個項目，其中(A)、(B)、(C)皆為列出的 Web 應用程式弱點，而「網站資料庫備份不全」則不屬於此範疇。"
+            },
+            {
+                id: 38,
+                question: "關於教材中提到的應用程式安全風險，下列敘述何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "注入式攻擊通常是利用程式碼的撰寫缺陷，將惡意指令碼注入執行。",
+                    "跨站指令碼（XSS）可讓攻擊者在受害者的瀏覽器上執行惡意程式碼。",
+                    "弱點掃描工具能偵測應用程式程式碼中的所有漏洞。",
+                    "社交工程利用人性的弱點進行欺騙，是純粹的管理面風險，與技術無關。"
+                ],
+                correct: [0, 1],
+                explanation: "注入式攻擊與XSS都是利用程式碼缺陷。弱點掃描工具無法偵測所有漏洞。社交工程雖然利用人性弱點，但通常會與技術手法結合，不只是純粹的管理面風險。"
+            },
+            {
+                id: 39,
+                question: "資通安全健診（Cybersecurity Health Check）的主要目的是什麼？",
+                type: "single",
+                options: [
+                    "定期更新防毒軟體",
+                    "對資通系統進行全面性、多層次的檢測與評估",
+                    "僅為了找出網路設備的漏洞",
+                    "模擬駭客攻擊，以評估系統防護能力"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節將資安健診定義為對資通系統進行全面性檢測與評估，以了解其資安現狀。"
+            },
+            {
+                id: 40,
+                question: "下列何者不屬於教材中提到的，資通安全健診可能涵蓋的範圍？",
+                type: "single",
+                options: [
+                    "網路設備",
+                    "主機",
+                    "組織的人事管理",
+                    "應用程式"
+                ],
+                correct: [2],
+                explanation: "資安健診主要針對技術系統，例如網路、主機與應用程式，不直接涵蓋組織的人事管理。"
+            },
+            {
+                id: 41,
+                question: "資安健診作業流程中的哪一項，主要負責蒐集相關資訊，並建立完整的資安清單？",
+                type: "single",
+                options: [
+                    "弱點掃描",
+                    "規劃與準備",
+                    "滲透測試",
+                    "報告與改善"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節的流程圖顯示，在健診的「規劃與準備」階段，團隊會蒐集相關資訊並建立資產清單。"
+            },
+            {
+                id: 42,
+                question: "教材提到，資通安全健診報告通常會提供哪三種等級的改善建議？",
+                type: "single",
+                options: [
+                    "機密、完整、可用",
+                    "短期、中期、長期",
+                    "技術、管理、政策",
+                    "立即、優先、延後"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節明確指出，健診報告通常會提供短期、中期、長期的改善建議。"
+            },
+            {
+                id: 43,
+                question: "資安健診報告的最終目的是什麼？",
+                type: "single",
+                options: [
+                    "為企業或機關提供一次性解決方案",
+                    "提供資安風險現況與改善建議，協助後續資安維護",
+                    "作為外部稽核的唯一依據",
+                    "完全取代日常資安監控"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節說明，健診報告旨在提供資安風險現況與改善建議，協助後續的資安維護與改善。"
+            },
+            {
+                id: 44,
+                question: "在資通安全健診中，下列哪一項是網路安全的關鍵？",
+                type: "single",
+                options: [
+                    "資料加密",
+                    "縱深防禦",
+                    "生物辨識",
+                    "系統備份"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-6節提到，縱深防禦是網路安全管理與技術的關鍵概念。"
+            },
+            {
+                id: 45,
+                question: "在資安健診的技術檢測中，通常會針對下列哪三種主要層次進行檢測？",
+                type: "single",
+                options: [
+                    "人員、流程、技術",
+                    "網路、主機、應用程式",
+                    "機密性、完整性、可用性",
+                    "硬體、軟體、資料"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節明確提到，資安健診的技術檢測通常針對網路、主機和應用程式三個主要層次。"
+            },
+            {
+                id: 46,
+                question: "在資通安全健診的作業流程中，哪一項是最先執行的步驟？",
+                type: "single",
+                options: [
+                    "資通系統的實際檢測",
+                    "撰寫資安健診報告",
+                    "規劃與準備",
+                    "資通系統改善"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-5節的流程圖顯示，資安健診的流程從「規劃與準備」開始。"
+            },
+            {
+                id: 47,
+                question: "資通系統的實體安全中，下列哪一項不屬於環境控制的範疇？",
+                type: "single",
+                options: [
+                    "電力供應的備援",
+                    "空調與溫濕度控制",
+                    "消防系統",
+                    "監視錄影系統"
+                ],
+                correct: [3],
+                explanation: "教材第7單元1-7節指出，監視錄影系統屬於實體存取控制，用於監控活動，而非環境控制。"
+            },
+            {
+                id: 48,
+                question: "資通安全健診的技術檢測範疇中，「主機」檢測包含哪些項目？",
+                type: "single",
+                options: [
+                    "網路拓撲與存取控制",
+                    "服務弱點與帳號管理",
+                    "資料庫安全與程式碼弱點",
+                    "實體安全與電力備援"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節指出，主機檢測主要包含作業系統、服務弱點、帳號管理等項目。"
+            },
+            {
+                id: 49,
+                question: "在資安健診中，關於「網路」層次的檢測，通常會包含哪些項目？",
+                type: "single",
+                options: [
+                    "系統修補程式管理與帳號管理",
+                    "網路架構、網路設備組態與無線網路安全",
+                    "原始碼檢測與資料庫安全設定",
+                    "人員權限管理與教育訓練"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節指出，網路層次的檢測包括網路架構、網路設備組態、網路服務弱點與無線網路安全。"
+            },
+            {
+                id: 50,
+                question: "在資安健診中，對「應用程式」層次進行檢測時，通常會檢查哪些項目？",
+                type: "single",
+                options: [
+                    "系統修補程式管理與弱點掃描",
+                    "程式碼安全與資料庫安全設定",
+                    "網路架構與防火牆設定",
+                    "人員資安意識與教育訓練"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節指出，應用程式層次的檢測包含原始碼安全、資料庫安全設定及弱點掃描等。"
+            },
+            {
+                id: 51,
+                question: "在資安健診的技術檢測中，為何會特別檢查「主機」？",
+                type: "single",
+                options: [
+                    "因為主機是最容易被駭客攻擊的目標",
+                    "因為主機是資通系統的核心，承載重要的應用服務與資料",
+                    "因為主機檢測最為簡單，耗時最短",
+                    "因為主機是唯一的網路設備"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節指出，主機是資通系統的核心，承載重要的應用服務與資料，因此其安全性至關重要。"
+            },
+            {
+                id: 52,
+                question: "根據教材，為何要定期進行資通安全健診？",
+                type: "single",
+                options: [
+                    "因為駭客攻擊手法不斷演進，新的風險不斷出現",
+                    "因為資安健診可以取代日常的資安維護工作",
+                    "因為資安健診報告是唯一的資安政策依據",
+                    "因為資安健診是政府強制要求所有機關必須執行的"
+                ],
+                correct: [0],
+                explanation: "教材第7單元1-5節指出，駭客攻擊手法與時俱進，因此需要定期健診以發現新的風險與漏洞。"
+            },
+            {
+                id: 53,
+                question: "下列哪項是資通安全健診報告通常會提供的重要資訊？",
+                type: "single",
+                options: [
+                    "未來五年的資安預算規劃",
+                    "資安風險現況與威脅情資",
+                    "所有被利用的漏洞與攻擊路徑",
+                    "資通系統的採購清單"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節說明，健診報告會提供資安風險現況，並可參考威脅情資進行分析。"
+            },
+            {
+                id: 54,
+                question: "在資安健診報告中，提供短期、中期、長期的改善建議，其主要考量是？",
+                type: "single",
+                options: [
+                    "依照資通系統的複雜程度",
+                    "依照預算的分配多寡",
+                    "依照風險的嚴重性與改善的緩急",
+                    "依照資安人員的人數多寡"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-5節指出，健診報告會根據發現的資安風險的嚴重性與改善的緩急，提供不同時程的改善建議。"
+            },
+            {
+                id: 55,
+                question: "根據教材，資通安全健診的作業流程中，「風險評估」是在哪一個階段進行的？",
+                type: "single",
+                options: [
+                    "規劃與準備",
+                    "資通系統實際檢測",
+                    "報告與改善",
+                    "改善方案執行"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節的流程圖顯示，風險評估是在實際檢測階段，利用各種工具與手法進行的。"
+            },
+            {
+                id: 56,
+                question: "下列何者不屬於教材中提到的，資安健診的技術檢測範疇？",
+                type: "single",
+                options: [
+                    "網路檢測",
+                    "應用程式檢測",
+                    "主機檢測",
+                    "人員資安意識"
+                ],
+                correct: [3],
+                explanation: "教材在第7單元1-5節將技術檢測分為「網路」、「主機」、「應用程式」三層次。人員資安意識屬於管理層面，而非技術檢測範疇。"
+            },
+            {
+                id: 57,
+                question: "在資安健診中，下列何者不屬於「網路」層次的檢測項目？",
+                type: "single",
+                options: [
+                    "網路架構",
+                    "網路設備組態",
+                    "應用程式原始碼安全",
+                    "無線網路安全"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-5節指出，應用程式原始碼安全屬於「應用程式」層次的檢測項目。"
+            },
+            {
+                id: 58,
+                question: "根據教材內容，資通安全健診的主要目的與特性為何？(複選)",
+                type: "multiple",
+                options: [
+                    "資安健診是一種全面性的評估，涵蓋組織的資通系統、管理與政策。",
+                    "健診報告的最終目的在於提供風險現況，並協助後續的資安維護。",
+                    "資安健診可以完全取代日常的資安監控與防護。",
+                    "健診報告會根據風險的緩急程度，提供短期、中期、長期的改善建議。"
+                ],
+                correct: [0, 1, 3],
+                explanation: "資安健診是多層次的評估，其報告旨在提供建議而非取代日常監控。教材明確指出報告會依據風險嚴重性提供不同時程的建議。"
+            },
+            {
+                id: 59,
+                question: "資通安全健診的技術檢測中，通常會針對哪些主要層次進行檢測？(複選)",
+                type: "multiple",
+                options: [
+                    "組織的人事管理與教育訓練。",
+                    "網路層次，如網路架構與設備組態。",
+                    "主機層次，如作業系統與帳號管理。",
+                    "應用程式層次，如程式碼安全與資料庫安全。"
+                ],
+                correct: [1, 2, 3],
+                explanation: "資安健診的技術檢測主要涵蓋網路、主機與應用程式三個層次。組織人事管理屬於管理面範疇，不包含在技術檢測中。"
+            },
+            {
+                id: 60,
+                question: "「縱深防禦」（Defense in Depth）的概念意指？",
+                type: "single",
+                options: [
+                    "在單一網路層次設置多種資安設備",
+                    "僅在最外層網路部署防火牆",
+                    "在不同層次部署多重、獨立的防禦機制",
+                    "使用單一但最先進的資安技術"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-6節將縱深防禦定義為在資通系統的不同層次，部署多重、獨立的防禦機制，以確保即使一道防線被突破，後續仍有保護。"
+            },
+            {
+                id: 61,
+                question: "網路存取控制（NAC）的主要功能是？",
+                type: "single",
+                options: [
+                    "加密網路傳輸資料",
+                    "限制使用者對網路資源的存取權限",
+                    "即時監控網路流量，偵測惡意活動",
+                    "在網路邊界過濾惡意流量"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-6節指出，網路存取控制（NAC）用於確保只有經授權的設備和使用者才能連線，以限制其網路存取權限。"
+            },
+            {
+                id: 62,
+                question: "防火牆的主要功能是？",
+                type: "single",
+                options: [
+                    "偵測惡意程式",
+                    "作為組織網路與外部網路之間的守門員",
+                    "加密網路傳輸資料",
+                    "自動修補系統漏洞"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-6節將防火牆比喻為網路的守門員，負責過濾、阻擋不符合規則的網路封包。"
+            },
+            {
+                id: 63,
+                question: "入侵偵測系統（IDS）與入侵防禦系統（IPS）的主要區別在於？",
+                type: "single",
+                options: [
+                    "IDS可以主動阻擋攻擊，IPS只能偵測",
+                    "IDS與IPS的功能完全相同",
+                    "IDS被動偵測並發出警報，IPS則能主動阻擋惡意行為",
+                    "IDS主要偵測網路流量，IPS主要偵測主機行為"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-6節說明，IDS是「被動」偵測與警報，而IPS則能「主動」阻擋惡意流量。"
+            },
+            {
+                id: 64,
+                question: "教材提到，入侵防禦系統（IPS）的主要功能是？",
+                type: "single",
+                options: [
+                    "僅偵測網路上的惡意流量",
+                    "分析日誌文件，找出異常活動",
+                    "主動阻擋惡意網路流量",
+                    "為遠端使用者提供加密連線"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-6節說明，IPS是「主動」地在網路中阻擋惡意流量，保護資通系統免受威脅。"
+            },
+            {
+                id: 65,
+                question: "下列哪一種設備可以為遠端使用者提供安全的加密連線，使其能夠安全地存取公司內部網路？",
+                type: "single",
+                options: [
+                    "防火牆",
+                    "入侵防禦系統（IPS）",
+                    "虛擬私人網路（VPN）",
+                    "網路存取控制（NAC）"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-6節提到，虛擬私人網路（VPN）可以為遠端使用者提供一個加密的通道，使其能安全地存取內部網路資源。"
+            },
+            {
+                id: 66,
+                question: "下列哪種網路安全設備或技術，主要負責依據既定的安全規則，對網路流量進行過濾與控制？",
+                type: "single",
+                options: [
+                    "入侵偵測系統（IDS）",
+                    "虛擬私人網路（VPN）",
+                    "防火牆（Firewall）",
+                    "資料加密"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-6節提到，防火牆的主要功能就是依據安全規則，對進出網路的流量進行過濾與控制。"
+            },
+            {
+                id: 67,
+                question: "下列哪種網路安全技術，主要透過分析網路封包來辨識惡意的連線行為？",
+                type: "single",
+                options: [
+                    "網路存取控制（NAC）",
+                    "虛擬私人網路（VPN）",
+                    "入侵偵測系統（IDS）",
+                    "防火牆（Firewall）"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-6節說明，入侵偵測系統（IDS）透過分析網路封包，偵測是否有惡意行為或違反安全政策的活動。"
+            },
+            {
+                id: 68,
+                question: "下列哪種情況最能體現「網路分段」的概念？",
+                type: "single",
+                options: [
+                    "將整個公司的網路連到同一個交換器上",
+                    "將員工辦公網路與訪客網路分開",
+                    "僅在網路出口部署一個防火牆",
+                    "使用單一的網路協定來傳輸資料"
+                ],
+                correct: [1],
+                explanation: "網路分段是將一個大網路分成多個小區塊，將員工與訪客網路分開是典型的網路分段應用。"
+            },
+            {
+                id: 69,
+                question: "在資安健診的技術檢測中，下列何者不屬於「網路」層次的檢測項目？",
+                type: "single",
+                options: [
+                    "網路架構",
+                    "網路設備組態",
+                    "應用程式原始碼安全",
+                    "無線網路安全"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-5節指出，應用程式原始碼安全屬於「應用程式」層次的檢測項目。"
+            },
+            {
+                id: 70,
+                question: "在資安健診中，對「應用程式」層次進行檢測時，通常會檢查哪些項目？",
+                type: "single",
+                options: [
+                    "系統修補程式管理與弱點掃描",
+                    "程式碼安全與資料庫安全設定",
+                    "網路架構與防火牆設定",
+                    "人員資安意識與教育訓練"
+                ],
+                correct: [1],
+                explanation: "教材第7單元1-5節指出，應用程式層次的檢測包含原始碼安全、資料庫安全設定及弱點掃描等。"
+            },
+            {
+                id: 71,
+                question: "關於「網路安全」的敘述，下列何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "「縱深防禦」是一種在不同層次部署多重、獨立防禦機制的概念。",
+                    "網路存取控制（NAC）用於確保只有經授權的設備才能連線到網路。",
+                    "防火牆的主要功能是作為組織網路與外部網路之間的守門員。",
+                    "入侵偵測系統（IDS）與入侵防禦系統（IPS）的主要區別在於，IDS可主動阻擋攻擊。"
+                ],
+                correct: [0, 1, 2],
+                explanation: "縱深防禦、NAC、防火牆的敘述皆正確。然而，IDS是被動偵測並發出警報，而IPS才能主動阻擋攻擊，因此選項(D)敘述錯誤。"
+            },
+            {
+                id: 72,
+                question: "下列哪些網路安全技術或設備，屬於教材中所討論的範疇？(複選)",
+                type: "multiple",
+                options: [
+                    "資料加密，確保傳輸過程中的資料機密性。",
+                    "虛擬私人網路（VPN），為遠端使用者提供安全連線。",
+                    "網路分段，將大型網路分割成多個獨立區塊。",
+                    "入侵防禦系統（IPS），用於阻擋惡意軟體與垃圾郵件。"
+                ],
+                correct: [0, 1, 2],
+                explanation: "教材詳細介紹了資料加密、VPN、網路分段、以及內容過濾系統等網路安全技術。入侵防禦系統（IPS）主要功能是阻擋惡意流量與入侵行為，但教材中特別將「內容過濾系統」獨立列出，因此選項(D)的描述不完全符合教材的分類。"
+            },
+            {
+                id: 73,
+                question: "關於入侵偵測系統（IDS）與入侵防禦系統（IPS），下列敘述何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "IDS扮演被動角色，主要功能是偵測並發出警報。",
+                    "IPS扮演主動角色，能夠在網路層級阻擋惡意流量。",
+                    "IPS通常部署在網路邊界，作為防火牆的補充。",
+                    "IDS是負責主動阻擋攻擊，而IPS僅負責偵測。"
+                ],
+                correct: [0, 1, 2],
+                explanation: "教材明確指出IDS是被動、IPS是主動。IPS常部署在防火牆後，並利用特徵碼或行為分析來進行判斷。而選項(D)則是將IDS與IPS的角色對調，為錯誤敘述。"
+            },
+            {
+                id: 74,
+                question: "在網路安全中，為何需要「網路分段」？(複選)",
+                type: "multiple",
+                options: [
+                    "減少網路廣播範圍，提升網路效能。",
+                    "增加攻擊者在網路中的移動難度，限制其影響範圍。",
+                    "確保所有設備都能連線到同一個網段，方便管理。",
+                    "方便對不同安全等級的區域進行獨立的安全控制。"
+                ],
+                correct: [0, 1, 3],
+                explanation: "網路分段能縮小網路廣播範圍，提升效能。同時，它能將網路隔離，使駭客難以橫向移動。選項(C)與網路分段的初衷相反，網路分段是為了隔離不同網段。"
+            },
+            {
+                id: 75,
+                question: "實體安全的第一道防線是什麼？",
+                type: "single",
+                options: [
+                    "生物辨識系統",
+                    "門禁管理系統",
+                    "資通機房的空調與電力設備",
+                    "實體環境的安全防護"
+                ],
+                correct: [3],
+                explanation: "教材第7單元1-7節指出，實體安全的第一道防線是對資通機房的實體環境進行安全防護，例如建築物的結構。"
+            },
+            {
+                id: 76,
+                question: "下列哪一項不屬於教材中提到的實體安全威脅？",
+                type: "single",
+                options: [
+                    "火災、水災等自然災害",
+                    "斷電、空調失靈等環境因素",
+                    "惡意軟體感染",
+                    "未經授權人員擅闖"
+                ],
+                correct: [2],
+                explanation: "惡意軟體感染屬於軟體與系統層面的威脅，不屬於實體安全範疇。"
+            },
+            {
+                id: 77,
+                question: "在實體安全中，為什麼「門禁系統」被認為是重要的？",
+                type: "single",
+                options: [
+                    "因為它可以取代所有其他的實體防護措施",
+                    "因為它是防止未經授權人員進入的第一道防線",
+                    "因為它可以偵測並阻擋惡意網路流量",
+                    "因為它可以確保機房的電力與空調供應"
+                ],
+                correct: [1],
+                explanation: "教材在第7單元1-7節強調，門禁系統是防止未經授權人員進入的第二道防線的核心，用於實體存取控制。"
+            },
+            {
+                id: 78,
+                question: "在資通系統的實體安全中，下列哪一項不屬於環境控制的範疇？",
+                type: "single",
+                options: [
+                    "電力供應的備援",
+                    "空調與溫濕度控制",
+                    "消防系統",
+                    "監視錄影系統"
+                ],
+                correct: [3],
+                explanation: "教材第7單元1-7節指出，監視錄影系統屬於實體存取控制，用於監控活動，而非環境控制。"
+            },
+            {
+                id: 79,
+                question: "根據教材，實體安全中的「三道防線」不包含下列何者？",
+                type: "single",
+                options: [
+                    "第一道防線：建築物",
+                    "第二道防線：門禁與存取控制",
+                    "第三道防線：機房內部管理",
+                    "第四道防線：網路加密"
+                ],
+                correct: [3],
+                explanation: "教材第7單元1-7節將實體安全分為三道防線，分別是建築物、門禁與存取控制、以及機房內部管理。網路加密是網路安全的範疇。"
+            },
+            {
+                id: 80,
+                question: "在實體安全中，下列哪一種驗證方式，因為唯一且難以偽造，被認為是最高級別的驗證方式？",
+                type: "single",
+                options: [
+                    "密碼驗證",
+                    "智慧卡或磁卡",
+                    "生物辨識",
+                    "鍵盤輸入"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-7節說明，生物辨識（如指紋、虹膜）因為其唯一性，是最高級別的驗證方式。"
+            },
+            {
+                id: 81,
+                question: "教材提到，為何需要在資通機房內設置空調與溫濕度控制？",
+                type: "single",
+                options: [
+                    "為了讓工作人員有舒適的工作環境",
+                    "因為可以讓機房的網路連線更穩定",
+                    "為了防止設備因過熱或潮濕而故障",
+                    "為了防止駭客入侵"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-7節說明，良好的溫濕度控制有助於確保設備正常運作，避免因過熱或潮濕而故障。"
+            },
+            {
+                id: 82,
+                question: "在實體安全中，下列哪一項措施是用來應對「火災」威脅？",
+                type: "single",
+                options: [
+                    "不斷電系統（UPS）",
+                    "消防系統",
+                    "門禁管理",
+                    "監視錄影系統"
+                ],
+                correct: [1],
+                explanation: "消防系統是專門用於應對火災威脅的實體安全措施。"
+            },
+            {
+                id: 83,
+                question: "教材提到，下列何者是確保實體安全的第一道防線？",
+                type: "single",
+                options: [
+                    "門禁卡",
+                    "監視器",
+                    "資通機房的建築結構",
+                    "消防系統"
+                ],
+                correct: [2],
+                explanation: "教材第7單元1-7節明確指出，實體安全的第一道防線是建築物本身的結構安全。"
+            },
+            {
+                id: 84,
+                question: "關於資通機房的「實體安全」，下列敘述何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "實體安全的三道防線中，第一道防線是機房的建築結構與選址。",
+                    "門禁系統是實體存取控制的核心，屬於第二道防線。",
+                    "第三道防線主要保護機房內部的伺服器機櫃與設備。",
+                    "實體安全威脅僅限於人為惡意破壞。"
+                ],
+                correct: [0, 1, 2],
+                explanation: "教材將實體安全分為三道防線，其定義與選項(A)(B)(C)相符。然而，實體安全威脅也包含自然災害（如火災、水災）與環境因素（如斷電），因此選項(D)錯誤。"
+            },
+            {
+                id: 85,
+                question: "在資通機房的實體安全中，下列哪些措施屬於「環境控制」的範疇？(複選)",
+                type: "multiple",
+                options: [
+                    "確保機房有足夠的空調，維持適當的溫度與濕度。",
+                    "建置火災偵測與自動滅火的消防系統。",
+                    "提供備援電力系統，如發電機與不斷電系統（UPS）。",
+                    "使用生物辨識或門禁卡來控制人員進出。"
+                ],
+                correct: [0, 1, 2],
+                explanation: "教材將環境控制定義為電力、空調、消防等，用以維持機房設備的正常運作。選項(D)屬於實體存取控制。"
+            },
+            {
+                id: 86,
+                question: "關於實體安全中的「存取控制」，下列敘述何者正確？(複選)",
+                type: "multiple",
+                options: [
+                    "監視錄影系統可以用於事後追查入侵事件。",
+                    "生物辨識是最高級別的驗證方式，因為它唯一且難以偽造。",
+                    "門禁系統是唯一的實體存取控制方式。",
+                    "存取控制的目的是防止未經授權的人員進入機房。"
+                ],
+                correct: [0, 1, 3],
+                explanation: "監視器能提供事後追查的證據。生物辨識是最高級別的驗證方式。然而，除了門禁系統，門鎖、門禁卡、警衛等也都是實體存取控制的一部分，因此選項(C)錯誤。"
+            }
+        ];
+
+
+        // 全域變數
+        let currentQuestion = 0;
+        let userAnswers = {}; // 儲存使用者答案
+        let showingExplanation = false;
+
+        // 初始化測驗
+        function initQuiz() {
+            document.getElementById('totalNum').textContent = questions.length;
+            loadQuestion();
+            updateStats();
+            generateHistoryGrid();
+        }
+
+        // 載入題目
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            const quizCard = document.getElementById('quizCard');
+            
+            // 判斷題目類型
+            const typeLabel = question.type === 'single' ? '單選題' : '複選題';
+            const inputType = question.type === 'single' ? 'radio' : 'checkbox';
+            
+            // 生成選項HTML
+            let optionsHTML = '';
+            question.options.forEach((option, index) => {
+                const isSelected = userAnswers[currentQuestion] && userAnswers[currentQuestion].includes(index);
+                optionsHTML += `
+                    <div class="option" onclick="selectOption(${index})">
+                        <input type="${inputType}" name="q${currentQuestion}" value="${index}" ${isSelected ? 'checked' : ''} onchange="handleOptionChange(${index})">
+                        <label>(${String.fromCharCode(65 + index)}) ${option}</label>
+                    </div>
+                `;
+            });
+
+            quizCard.innerHTML = `
+                <div class="question-header">
+                    <span class="question-number">第 ${currentQuestion + 1} 題</span>
+                    <span class="question-type">${typeLabel}</span>
+                </div>
+                <div class="question-text">${question.question}</div>
+                <div class="options">${optionsHTML}</div>
+                <div class="buttons">
+                    <button class="btn btn-primary" onclick="submitAnswer()">提交答案</button>
+                    <button class="btn btn-secondary" onclick="showExplanation()" id="explanationBtn" style="display: none;">查看解答</button>
+                </div>
+                <div class="explanation" id="explanation">
+                    <h4>📝 解答說明</h4>
+                    <p><strong>正確答案：</strong>${question.correct.map(i => String.fromCharCode(65 + i)).join(', ')}</p>
+                    <p>${question.explanation}</p>
+                </div>
+            `;
+
+            // 更新進度
+            document.getElementById('currentNum').textContent = currentQuestion + 1;
+            document.getElementById('progressFill').style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+            
+            // 更新按鈕狀態
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = currentQuestion === questions.length - 1;
+            
+            showingExplanation = false;
+        }
+
+        // 選擇選項
+        function selectOption(index) {
+            const question = questions[currentQuestion];
+            const checkbox = document.querySelector(`input[value="${index}"]`);
+            
+            if (question.type === 'single') {
+                // 單選題：取消所有選項，只選中當前項
+                document.querySelectorAll(`input[name="q${currentQuestion}"]`).forEach(input => {
+                    input.checked = false;
+                });
+                checkbox.checked = true;
+                userAnswers[currentQuestion] = [index];
+            } else {
+                // 複選題：切換選中狀態
+                checkbox.checked = !checkbox.checked;
+                if (!userAnswers[currentQuestion]) {
+                    userAnswers[currentQuestion] = [];
+                }
+                
+                if (checkbox.checked) {
+                    if (!userAnswers[currentQuestion].includes(index)) {
+                        userAnswers[currentQuestion].push(index);
+                    }
+                } else {
+                    userAnswers[currentQuestion] = userAnswers[currentQuestion].filter(i => i !== index);
+                }
+            }
+            
+            updateHistoryGrid();
+        }
+
+        // 處理選項變化
+        function handleOptionChange(index) {
+            // 這個函數由於selectOption已經處理了邏輯，可以保持空白
+        }
+
+        // 提交答案
+        function submitAnswer() {
+            const question = questions[currentQuestion];
+            const userAnswer = userAnswers[currentQuestion];
+            
+            if (!userAnswer || userAnswer.length === 0) {
+                showToast('請選擇答案！', 'error');
+                return;
+            }
+
+            // 檢查答案正確性
+            const isCorrect = arraysEqual(userAnswer.sort(), question.correct.sort());
+            
+            // 顯示結果
+            highlightOptions(isCorrect);
+            
+            // 播放音效（模擬）
+            if (isCorrect) {
+                showToast('答對了！', 'success');
+            } else {
+                showToast('答錯了，請查看解答', 'error');
+            }
+            
+            // 顯示解答按鈕
+            document.getElementById('explanationBtn').style.display = 'inline-block';
+            
+            updateStats();
+            updateHistoryGrid();
+        }
+
+        // 比較陣列相等
+        function arraysEqual(a, b) {
+            if (a.length !== b.length) return false;
+            for (let i = 0; i < a.length; i++) {
+                if (a[i] !== b[i]) return false;
+            }
+            return true;
+        }
+
+        // 標示選項正確性
+        function highlightOptions(isCorrect) {
+            const question = questions[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach((option, index) => {
+                const input = option.querySelector('input');
+                option.classList.remove('correct', 'incorrect', 'user-selected');
+                
+                if (question.correct.includes(index)) {
+                    option.classList.add('correct');
+                } else if (input.checked) {
+                    option.classList.add('incorrect');
+                }
+                
+                if (input.checked) {
+                    option.classList.add('user-selected');
+                }
+            });
+        }
+
+        // 顯示解答
+        function showExplanation() {
+            const explanation = document.getElementById('explanation');
+            explanation.classList.add('show');
+            showingExplanation = true;
+        }
+
+        // 上一題
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+
+        // 下一題
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            }
+        }
+
+        // 跳到指定題目
+        function goToQuestion(questionIndex) {
+            currentQuestion = questionIndex;
+            loadQuestion();
+            toggleHistory(); // 關閉歷史面板
+        }
+
+        // 切換歷史記錄面板
+        function toggleHistory() {
+            const historyPanel = document.getElementById('historyPanel');
+            historyPanel.classList.toggle('show');
+        }
+
+        // 生成歷史記錄網格
+        function generateHistoryGrid() {
+            const historyGrid = document.getElementById('historyGrid');
+            let gridHTML = '';
+            
+            for (let i = 0; i < questions.length; i++) {
+                let status = 'unanswered';
+                if (userAnswers[i]) {
+                    const isCorrect = arraysEqual(userAnswers[i].sort(), questions[i].correct.sort());
+                    status = isCorrect ? 'correct' : 'incorrect';
+                }
+                
+                gridHTML += `
+                    <div class="history-item ${status}" onclick="goToQuestion(${i})">
+                        ${i + 1}
+                    </div>
+                `;
+            }
+            
+            historyGrid.innerHTML = gridHTML;
+        }
+
+        // 更新歷史記錄網格
+        function updateHistoryGrid() {
+            generateHistoryGrid();
+        }
+
+        // 更新統計資料
+        function updateStats() {
+            let correctCount = 0;
+            let incorrectCount = 0;
+            
+            Object.keys(userAnswers).forEach(questionIndex => {
+                const question = questions[parseInt(questionIndex)];
+                const userAnswer = userAnswers[questionIndex];
+                
+                if (userAnswer && userAnswer.length > 0) {
+                    const isCorrect = arraysEqual(userAnswer.sort(), question.correct.sort());
+                    if (isCorrect) {
+                        correctCount++;
+                    } else {
+                        incorrectCount++;
+                    }
+                }
+            });
+            
+            const totalAnswered = correctCount + incorrectCount;
+            const accuracy = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
+            
+            document.getElementById('correctCount').textContent = correctCount;
+            document.getElementById('incorrectCount').textContent = incorrectCount;
+            document.getElementById('accuracy').textContent = `${accuracy}%`;
+        }
+
+        // 顯示提示訊息
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // 重新開始測驗
+        function restartQuiz() {
+            if (confirm('確定要重新開始測驗嗎？所有答案將被清除。')) {
+                userAnswers = {};
+                currentQuestion = 0;
+                showingExplanation = false;
+                initQuiz();
+                showToast('測驗已重新開始', 'success');
+            }
+        }
+
+        // 頁面載入完成後初始化
+        window.addEventListener('load', initQuiz);
+    </script>
+</body>
+</html>
