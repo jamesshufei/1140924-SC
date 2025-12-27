@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>資安專職人力及證照 FAQ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #f6f8fa;
+      margin: 0;
+      padding: 0;
+      font-family: "Microsoft JhengHei", "PingFang TC", Arial, sans-serif;
+      color: #222;
+      box-sizing: border-box;
+    }
+    .faq-container {
+      max-width: 800px;
+      margin: 40px auto 40px auto;
+      background: #fff;
+      box-shadow: 0 2px 16px #e3e3e3;
+      border-radius: 16px;
+      padding: 1.5em;
+      box-sizing: border-box;
+    }
+    .faq-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 1.8em;
+      gap: 1em;
+    }
+    .faq-header {
+      font-size: 2em;
+      font-weight: bold;
+      color: #1976d2;
+      letter-spacing: 1.5px;
+      word-break: break-all;
+    }
+    .faq-backbtn-box {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 170px;
+    }
+    .faq-backbtn {
+      background: #1976d2;
+      color: #fff;
+      padding: 0.72em 1.3em;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      outline: none;
+      display: inline-block;
+    }
+    .faq-backbtn:hover, .faq-backbtn:focus {
+      background: #1250a7;
+      color: #ffd;
+    }
+    @media (max-width: 600px) {
+      .faq-header-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: .8em;
+      }
+      .faq-header {
+        font-size: 1.08em;
+        text-align: center;
+      }
+      .faq-backbtn-box {
+        min-width: 0;
+        justify-content: center;
+      }
+      .faq-backbtn {
+        font-size: 0.96em;
+        width: 100%;
+        text-align: center;
+        padding: 0.6em 1em;
+      }
+    }
+    .faq-list { margin-top: 1em; }
+    .faq-item { 
+      margin-bottom: 1em;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px #eee;
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .faq-q {
+      background: #1976d2;
+      color: #fff;
+      padding: 0.95em 1em;
+      cursor: pointer;
+      font-size: 1.13em;
+      font-weight: bold;
+      border: none;
+      outline: none;
+      letter-spacing: 1px;
+    }
+    .faq-q:after {
+      content: "＋";
+      float: right;
+      font-size: 1.13em;
+    }
+    .faq-item.open .faq-q:after {
+      content: "－";
+    }
+    .faq-a { 
+      display: none; 
+      padding: 1em 1.2em 1em 1.2em;
+    }
+    .faq-item.open .faq-a { display: block; animation: fadeIn 0.4s; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .faq-main { background: #e3f2fd; border-left: 12px solid #1976d2; margin-bottom: 0.6em; padding: 0.8em 1em;}
+    .faq-spec { background: #fffde7; border-left: 12px solid #fbc02d; margin-bottom: 0.6em; padding: 0.8em 1em;}
+    .faq-qualify { background: #e8f5e9; border-left: 12px solid #43a047; margin-bottom: 0.6em; padding: 0.8em 1em;}
+    .faq-note { background: #fce4ec; border-left: 12px solid #d81b60; margin-bottom: 0.6em; padding: 0.8em 1em;}
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll('.faq-item').forEach(function (item) {
+        item.querySelector('.faq-q').addEventListener('click', function () {
+          item.classList.toggle('open');
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="faq-container">
+    <div class="faq-header-row">
+      <div class="faq-header">
+        資安專職人力及證照
+      </div>
+      <div class="faq-backbtn-box">
+        <a class="faq-backbtn" href="index.html" title="返回問題分類">
+          返回問題分類
+        </a>
+      </div>
+    </div>
+    <div class="faq-list">
+            <!-- Q1 -->
+      <div class="faq-item" id="ch3-q1">
+        <div class="faq-q">Q1 何謂資通安全專職人員？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            資通安全專職人員，指全職執行資通安全業務者（詳參資通安全責任等級分級辦法附表一備註三、附表三備註三、附表五備註二說明）。
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="faq-item" id="ch3-q2">
+        <div class="faq-q">Q2 資通安全專職人員之職務內容為何？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            一、資通安全專職人員之職務內容分策略面、管理面及技術面等三大面向，各面向內容如下：<br>
+            (一) 策略面：<br>
+            1. 機關（及所屬）資安政策、資源分配及整體防護策略之規劃。<br>
+            2. 機關導入資安治理成熟度之協調與推動。<br>
+            3. 資通安全維護計畫實施情形之績效評估與檢討。<br>
+            4. （屬上級或監督機關者）稽核所屬（或監督）公務機關之資通安全維護計畫實施情形。<br>
+            (二) 管理面：<br>
+            1. 訂定、修正及實施資通安全維護計畫並提出實施情形。<br>
+            2. 訂定及建立資通安全事件通報及應變機制。<br>
+            3. 辦理下列機關資通安全責任等級之應辦事項：資訊安全管理系統之導入及通過公正第三方之驗證、業務持續運作演練、辦理資通安全教育訓練等。<br>
+            4. （屬上級或監督機關者）針對所屬（或監督）公務機關，審查其資通安全維護計畫及實施情形、辦理其資通安全事件通報之審核、應變協處與改善報告之審核。<br>
+            5. 委外廠商管理與稽核。<br>
+            (三) 技術面：<br>
+            1. 整合、分析與分享資通安全情資。<br>
+            2. 配合主管機關辦理機關資通安全演練作業。<br>
+            3. 辦理下列機關資通安全責任等級之應辦事項：安全性檢測、資通安全健診、資通安全威脅偵測管理機制、政府組態基準、資通安全防護等。<br>
+            4. （屬上級或監督機關者）針對所屬（或監督）公務機關，規劃及辦理資通安全演練作業。
+          </div>
+          <div class="faq-spec">
+            二、機關資通安全專職人員之職務分工建議如下：<br>
+            (一) A級機關置4名專職人員：1名負責策略面工作，1至2名負責管理面工作，另1至2名負責技術面工作。<br>
+            (二) B級機關置2名專職人員：1名負責策略面及管理面工作，另1名負責技術面工作。<br>
+            (三) C級機關置1名專職人員：統籌機關資安業務。
+          </div>
+          <div class="faq-qualify">
+            三、機關如兼屬資安法之中央目的事業主管機關，應對所轄之特定非公務機關辦理下列事項，如資通安全專職人員無法容納，建議由機關權責單位另派人力辦理，資通安全專職人員提供必要之協助。<br>
+            (一) 審查其資通安全維護計畫及其實施情形。<br>
+            (二) 稽核其資通安全維護計畫實施情形。<br>
+            (三) 辦理其資通安全事件之通報審核、應變協處、改善報告審核。<br>
+            (四) 訂定及修正機關特定非公務機關管理辦法。<br>
+            (五) 指定關鍵基礎設施提供者及訂定其防護基準。<br>
+            (六) 分享資通安全情資。
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="faq-item" id="ch3-q3">
+        <div class="faq-q">Q3 機關規模不大且沒有資訊單位，如何在短時間配置資通安全專職人員？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            一、資安法施行後，各機關應優先於機關總員額內配置資通安全專職人員，惟為解決機關人力短時間調配問題，如暫無缺額人力可支配，得先以約聘僱或委外人員擔任。<br>
+            二、此外，建議資訊業務規模小之機關可考慮將資通系統及資源向上集中，由上級機關統籌辦理，減少機關自行維運之負擔。向上集中辦理之經費，於實務上有上級機關統編或由各使用機關分攤等方式。
+          </div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="faq-item" id="ch3-q4">
+        <div class="faq-q">Q4 資通安全專職人員是否要求要在資訊單位，或是否要求資訊職系？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            資通安全專職人員並未要求配置在資訊單位，也未要求由資訊職系人員擔任，惟機關應給予資通安全專職人員足夠的教育訓練，取得適當之資通安全專業證照及職能證書。
+          </div>
+        </div>
+      </div>
+      <!-- Q5 -->
+      <div class="faq-item" id="ch3-q5">
+        <div class="faq-q">Q5 資通安全專職人力，如果分散在好幾人的身上，可以用0.5+0.5=1 的方式配置嗎？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            此無法達成專職專人之設置意義，機關應指定專人全職執行資通安全業務。
+          </div>
+        </div>
+      </div>
+      <!-- Q6 -->
+      <div class="faq-item" id="ch3-q6">
+        <div class="faq-q">Q6 有關資通安全專業證照，所指由主管機關認可之資通安全證照，其清單在哪可取得？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            一、資通安全專業證照清單已公布於數位發展部資通安全署「資安法規專區」之「資安專業證照清單」(https://moda.gov.tw/ACS/laws/certificates/676)。<br>
+            二、本證照清單定期更新，各機關如有新增資通安全專業證照建議，請依數位發展部資通安全署網站公告之「資通安全專業證照認可審查作業流程」辦理。
+          </div>
+          <div class="faq-spec">
+            ✱ 特殊說明：證照清單網址如有調整，請以數位發展部資通安全署官網公告為準。
+          </div>
+        </div>
+      </div>
+      <!-- Q7 -->
+      <div class="faq-item" id="ch3-q7">
+        <div class="faq-q">Q7 資通安全職能訓練證書如何取得？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            一、各機關可透過參加主管機關辦理之資通安全職能訓練，且完成指定上課時數並通過評量測驗後，即可取得資通安全職能訓練證書。<br>
+            二、各機關亦可逕洽經主管機關認證之教育訓練機構申請開設資通安全職能訓練專班課程，相關申請資訊可洽主管機關(02)2380-8500。
+          </div>
+        </div>
+      </div>
+      <!-- Q8 -->
+      <div class="faq-item" id="ch3-q8">
+        <div class="faq-q">Q8 資通安全專業證照及資通安全職能訓練證書應由誰取得？需不需要每人1 張？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            公務機關資通安全專職人員至少持有資通安全專業證照及資通安全職能訓練證書各1 張以上、特定非公務機關資通安全專責人員至少持有資通安全專業證照1 張以上，並維持其證照或證書之有效性。至於其他資訊或資安相關人員，機關也應鼓勵同仁踴躍參加資安相關教育訓練，提升專業能力。
+          </div>
+          <div class="faq-qualify">
+            資格說明：各類人員請參照各級機關規範及公告，務必保持證照有效性。
+          </div>
+        </div>
+      </div>
+      <!-- Q9 -->
+      <div class="faq-item" id="ch3-q9">
+        <div class="faq-q">Q9 資通安全專職人員如有離職等異動情形，機關應如何因應？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            各機關應即時補足資通安全專職人力空缺，以維持專職人員配置之完整性。並請同時更新機關資通安全維護計畫相關內容。
+          </div>
+          <div class="faq-note">
+            備註：異動狀況如有爭議，通知主管機關協助。
+          </div>
+        </div>
+      </div>
+      <!-- Q10 -->
+      <div class="faq-item" id="ch3-q10">
+        <div class="faq-q">Q10 機關資通安全專職人員配置未達要求，會有何影響？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            主管機關將依資安法規定辦理督導，如未落實資通安全人力配置，將列為稽核重點，並依據檢查結果要求限期改善。
+          </div>
+          <div class="faq-note">
+            備註：持續未改善者，依資安法相關規定裁處。
+          </div>
+        </div>
+      </div>
+      <!-- Q11 -->
+      <div class="faq-item" id="ch3-q11">
+        <div class="faq-q">Q11 機關編制人數多但資訊業務規模小，資通安全專職人員要求可否更彈性？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            資通安全專職人員配置以機關責任等級為依據，不論總編制或資訊業務規模，均應依等級規定配置人力。
+          </div>
+        </div>
+      </div>
+      <!-- Q12 -->
+      <div class="faq-item" id="ch3-q12">
+        <div class="faq-q">Q12 機關如有資通安全專職人員多於規定人數，是否需要全部具備證照及訓練證書？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            只要求最低配置人數需具備資通安全專業證照及訓練證書，超出部分建議鼓勵同仁參與相關專業訓練提升能力。
+          </div>
+        </div>
+      </div>
+      <!-- Q13 -->
+      <div class="faq-item" id="ch3-q13">
+        <div class="faq-q">Q13 專職人員如需輪調或職務代辦，如何處理？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            專職職務如有輪調，應及時安排具備相關資格人員接任，保持人力資格之連續性。
+          </div>
+        </div>
+      </div>
+      <!-- Q14 -->
+      <div class="faq-item" id="ch3-q14">
+        <div class="faq-q">Q14 特定非公務機關之資通安全專責人員如兼任其他職務，是否符合要求？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            可兼任但須確實執行專責資通安全業務，主管機關將採抽查方式定期檢核。
+          </div>
+        </div>
+      </div>
+      <!-- Q15 -->
+      <div class="faq-item" id="ch3-q15">
+        <div class="faq-q">Q15 資通安全專職人員可以兼署資安長嗎？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            得兼署資安長但以專職執行資通安全業務為原則。
+          </div>
+        </div>
+      </div>
+      <!-- Q16 -->
+      <div class="faq-item" id="ch3-q16">
+        <div class="faq-q">Q16 機關主任秘書或副主管是否可以兼署資通安全專職人員？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            機關主任秘書或副主管原則上不適任專職人員，但於人力極為短缺且獲主管機關同意可例外。
+          </div>
+          <div class="faq-note">
+            備註：如有例外需求，應正式申請主管機關核備。
+          </div>
+        </div>
+      </div>
+      <!-- Q17 -->
+      <div class="faq-item" id="ch3-q17">
+        <div class="faq-q">Q17 資通安全專職人員任滿是否有時限？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            無強制任期限制，惟建議每3年至少評估一次專職人員適格性與培訓情形。
+          </div>
+        </div>
+      </div>
+      <!-- Q18 -->
+      <div class="faq-item" id="ch3-q18">
+        <div class="faq-q">Q18 規定所稱「資通安全專職人員」，是否須設置聘任或約聘人員？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            可由正式編制人員或聘約人員擔任，以全職執行資通安全工作為原則。
+          </div>
+        </div>
+      </div>
+      <!-- Q19 -->
+      <div class="faq-item" id="ch3-q19">
+        <div class="faq-q">Q19 機關僅能由委外方式完成資安專職人力配置是否可行？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            如人力短缺並獲主管機關同意，可委外擔任資通安全專職人員，但機關仍須負最終資安責任。
+          </div>
+        </div>
+      </div>
+      <!-- Q20 -->
+      <div class="faq-item" id="ch3-q20">
+        <div class="faq-q">Q20 若資安專職人員因為離職不可抗力導致短期空缺如何處理？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            應於一個月內完成補足或配置暫代人員，並通知主管機關備查，以維持業務運作。
+          </div>
+        </div>
+      </div>
+      <!-- Q21 -->
+      <div class="faq-item" id="ch3-q21">
+        <div class="faq-q">Q21 資通安全專職人員是否須具資訊安全相關技術背景？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            原則上需具備基本資通安全知識，並完成相關教育訓練，技術背景非強制但有助業務推展。
+          </div>
+          <div class="faq-qualify">
+            資格說明：鼓勵取得相關專業證照，提升整體資安素養。
+          </div>
+        </div>
+      </div>
+      <!-- Q22 -->
+      <div class="faq-item" id="ch3-q22">
+        <div class="faq-q">Q22 如果專職人員配置有疑義、資格互認問題，應如何處理？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            請來函主管機關專案協助或申請資格認定，由資通安全主管機關審核核定。
+          </div>
+        </div>
+      </div>
+      <!-- Q23 -->
+      <div class="faq-item" id="ch3-q23">
+        <div class="faq-q">Q23 機關資安專職人員因特殊因素無法完成法定配置，是否有申報或緩衝措施？</div>
+        <div class="faq-a">
+          <div class="faq-main">
+            若因特殊事由暫時未能完成專職人員配置，請向主管機關申報取得核備，並於核定期限內完成補足措施。
+          </div>
+          <div class="faq-note">
+            備註：如逾期未補齊，將依資安法相關規定處理。
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>

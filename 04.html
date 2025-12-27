@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>其他應辦事項 FAQ</title>
+<style>
+body { font-family:"微軟正黑體", Arial, sans-serif; background:#f7f8fc;}
+.container {max-width:990px;margin:38px auto 0 auto;background:#fff;border-radius:24px;box-shadow:0 2px 18px #e7eaf3;padding:2.8em 2em;}
+.topbar {display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6em;}
+.main-title {font-size:2.4em;font-weight:bold;color:#2266b4;}
+.return-btn {background:#2266b4;padding:0.88em 2.2em;border-radius:10px;color:#fff;font-size:1.13em;border:none;cursor:pointer;font-weight:bold;box-shadow:0 2px 10px #dedede;}
+.return-btn:hover{background:#194b88;}
+.qa-box {margin-bottom:1.25em;}
+.qa-title {font-size:1.2em;font-weight:bold;background:#2266b4;color:#fff;display:flex;align-items:center;border-radius:10px 10px 0 0;padding:0.95em 1.2em;cursor:pointer;}
+.qa-title .arrow {margin-left:auto;font-size:1.6em;}
+.qa-content {padding:1.3em 2em 1em 2em;background:#f6fafe;border-radius:0 0 12px 12px;display:none;}
+.qa-section {background:#e7f3fe;border-radius:6px;padding:1em;margin-bottom:12px;border-left:4px solid #6997ef;}
+.qa-section.green {background:#d5f5e7;border-left-color:#53ca87;}
+.qa-section.yellow {background:#fff6da;border-left-color:#e7b140;}
+.qa-section.pink {background:#fbe7ef;border-left-color:#d66aa5;}
+.qa-section .subtitle {font-weight:bold;margin-bottom:0.5em;}
+ul {margin: 0.4em 0 0.75em 1em;} li {margin-bottom:0.2em;}
+@media(max-width:700px){.container{padding:1.1em 0.3em;}.main-title{font-size:1.5em;}}
+</style>
+<script>
+function toggleQA(id){
+  var cont = document.getElementById(id);
+  var arrow = document.getElementById(id + 'arrow');
+  if (cont.style.display === "block") {
+    cont.style.display = "none";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    cont.style.display = "block";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="main-title">其他應辦事項 FAQ</div>
+    <button class="return-btn" onclick="window.location.href='index.html'">返回問題分類</button>
+  </div>
+  <!-- Q1 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa1')">Q1 分級辦法附表一至六備註中「資通安全健診」之同等或以上效用措施？<span class="arrow" id="qa1arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa1">
+      <div class="qa-section">主管機關會視科技發展及機關個案需求，個案審查認可同等效用措施，可申請替代，由主管機關及中央目的事業主管機關認定。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa2')">Q2 C級機關如無核心資通系統，是否須辦相關應辦事項？<span class="arrow" id="qa2arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa2">
+      <div class="qa-section green">如無核心資通系統，針對核心相關的項目則無須辦理。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa3')">Q3  委外維運是否仍須導入 CNS 27001／ISO 27001、並進行安全性檢測？<span class="arrow" id="qa3arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa3">
+      <div class="qa-section yellow">委外或自行維運皆須導入管理系統並進行安全性檢測，確保核心系統資安。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa4')">Q4  雲端機房ISMS導入範圍如何界定？<span class="arrow" id="qa4arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa4">
+      <div class="qa-section">雲端機房同樣納入ISMS範圍，請選用已通過ISMS驗證的雲端供應商。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa5')">Q5  資安政策核定程序及核定有效期？<span class="arrow" id="qa5arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa5">
+      <div class="qa-section">資安政策原則上由機關首長核定，有效期依主管機關公告及維護計畫週期。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa6')">Q6  資安維護計畫每年是否須重新核定？<span class="arrow" id="qa6arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa6">
+      <div class="qa-section green">每年按最新業務現況修正維護計畫並核定，確保合規與落實。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa7')">Q7  資安維護計畫需公告於官網嗎？<span class="arrow" id="qa7arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa7">
+      <div class="qa-section yellow">無須全面公告內容，依主管機關指示摘要公告或報備。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa8')">Q8  教育訓練是否須考試？<span class="arrow" id="qa8arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa8">
+      <div class="qa-section green">部分訓練須設有學習紀錄及測驗，依主管機關年度重點加強考核。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa9')">Q9  宣導方式得包含哪些類型？<span class="arrow" id="qa9arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa9">
+      <div class="qa-section">包含線上課程、實體講座、文宣品、測驗競賽、資訊安全日活動等。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa10')">Q10  資安專職人員須定期進修嗎？<span class="arrow" id="qa10arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa10">
+      <div class="qa-section green">專職人員須符合定期進修及學分積點要求，依主管機關公告執行。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa11')">Q11  委外/外包廠商需接受資安稽核嗎？<span class="arrow" id="qa11arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa11">
+      <div class="qa-section yellow">委外廠商必須通過資安稽核與查核，並配合改善，主辦機關須負監督責任。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa12')">Q12  機關需建立資安通報及應變機制嗎？<span class="arrow" id="qa12arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa12">
+      <div class="qa-section green">所有納管機關皆須建立資安事件通報及應變機制。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa13')">Q13  事件通報流程如何執行？<span class="arrow" id="qa13arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa13">
+      <div class="qa-section">事故發生須立即通報主管機關，依規定程序彙報，並啟動緊急應變。</div>
+      <div class="qa-section pink">通報必要時得協調跨部門合作，提升處置效能。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa14')">Q14  機關資安經費可否向上集中分配？<span class="arrow" id="qa14arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa14">
+      <div class="qa-section yellow">地方政府或集團機構得依實際需求統一編列資安預算並分配。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa15')">Q15  資安經費是否須由中央核撥？<span class="arrow" id="qa15arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa15">
+      <div class="qa-section">部分重大政策得由中央核定、核撥資安經費，地方及特定單位自籌並依公告申報。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa16')">Q16  資安專職人力缺額如何補足？<span class="arrow" id="qa16arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa16">
+      <div class="qa-section green">可調整員額、約聘僱或委外補足，須依規定及年度目標補強人力。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa17')">Q17  資安制度有哪些最新補充？<span class="arrow" id="qa17arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa17">
+      <div class="qa-section yellow">主管機關不定期公告最新指引與補充制度，請定期查詢法規及官網。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa18')">Q18  教育訓練/宣導活動怎麼查核？<span class="arrow" id="qa18arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa18">
+      <div class="qa-section">機關須保存年度活動紀錄及參加人次，供主管機關查核。</div>
+      <div class="qa-section green">重要機關應加強成果報告及成效評估。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa19')">Q19  事業單位僅有資訊室亦須納管嗎？<span class="arrow" id="qa19arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa19">
+      <div class="qa-section green">有資訊室者、不論核心系統大小皆須納管，防止資安弱點。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa20')">Q20  核心資通系統清冊由誰審定？<span class="arrow" id="qa20arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa20">
+      <div class="qa-section yellow">由機關首長核定並報備主管機關，異動時須及時修訂。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa21')">Q21  資安維護計畫異動如何通報？<span class="arrow" id="qa21arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa21">
+      <div class="qa-section">維護計畫重大異動應主動通報並報請核定。</div>
+    </div>
+  </div>
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa22')">Q22  同一組織多單位納管時是否可合併申報？<span class="arrow" id="qa22arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa22">
+      <div class="qa-section pink">得依主管機關規定集中報告，簡化行政流程，須確保細節資料準確。</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

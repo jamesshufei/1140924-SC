@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>納管對象及範圍 FAQ</title>
+<style>
+body { font-family:"微軟正黑體", Arial, sans-serif; background:#f7f8fc;}
+.container {max-width:990px;margin:38px auto 0 auto;background:#fff;border-radius:24px;box-shadow:0 2px 18px #e7eaf3;padding:2.8em 2em;}
+.topbar {display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6em;}
+.main-title {font-size:2.4em;font-weight:bold;color:#2266b4;}
+.return-btn {background:#2266b4;padding:0.88em 2.2em;border-radius:10px;color:#fff;font-size:1.13em;border:none;cursor:pointer;font-weight:bold;box-shadow:0 2px 10px #dedede;}
+.return-btn:hover{background:#194b88;}
+.qa-box {margin-bottom:1.25em;}
+.qa-title {font-size:1.2em;font-weight:bold;background:#2266b4;color:#fff;display:flex;align-items:center;border-radius:10px 10px 0 0;padding:0.95em 1.2em;cursor:pointer;}
+.qa-title .arrow {margin-left:auto;font-size:1.6em;}
+.qa-content {padding:1.3em 2em 1em 2em;background:#e8f3fc;border-radius:0 0 12px 12px;display:none;}
+.qa-answer {background:#e8f3fc;border-radius:6px;padding:1em;margin-top:-0.1em;}
+@media(max-width:700px){.container{padding:1.1em 0.3em;}.main-title{font-size:1.5em;}}
+</style>
+<script>
+function toggleQA(id){
+  var cont = document.getElementById(id);
+  var arrow = document.getElementById(id + 'arrow');
+  if (cont.style.display === "block") {
+    cont.style.display = "none";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    cont.style.display = "block";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="main-title">納管對象及範圍 FAQ</div>
+    <button class="return-btn" onclick="window.location.href='index.html'">返回問題分類</button>
+  </div>
+  <!-- FAQ收合展開 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa1')">
+      Q1  資安法的納管對象有哪些？
+      <span class="arrow" id="qa1arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa1">
+      <div class="qa-answer">
+        資安法納管對象主要分為三大類：<br>
+        1. 中央及地方各級公務機關（依資通安全管理法補充）<br>
+        2. 特定非公務機關（如部分國營事業及相關法人）<br>
+        3. 關鍵基礎設施提供者（CII，依主管機關指定）<br>
+        各類型適用細節請參照主管機關公告及相關認定細則。
+      </div>
+    </div>
+  </div>
+  <!-- Q2~Qn依此格式繼續填充 -->
+</div>
+</body>
+</html>

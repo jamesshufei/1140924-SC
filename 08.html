@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>其他 FAQ</title>
+<style>
+body { font-family:"微軟正黑體", Arial, sans-serif; background:#f7f8fc;}
+.container {max-width:990px;margin:38px auto 0 auto;background:#fff;border-radius:24px;box-shadow:0 2px 18px #e7eaf3;padding:2.8em 2em;}
+.topbar {display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6em;}
+.main-title {font-size:2.4em;font-weight:bold;color:#2266b4;}
+.return-btn {background:#2266b4;padding:0.88em 2.2em;border-radius:10px;color:#fff;font-size:1.13em;border:none;cursor:pointer;font-weight:bold;box-shadow:0 2px 10px #dedede;}
+.return-btn:hover{background:#194b88;}
+.qa-box {margin-bottom:1.25em;}
+.qa-title {font-size:1.2em;font-weight:bold;background:#2266b4;color:#fff;display:flex;align-items:center;border-radius:10px 10px 0 0;padding:0.95em 1.2em;cursor:pointer;}
+.qa-title .arrow {margin-left:auto;font-size:1.6em;}
+.qa-content {padding:1.3em 2em 1em 2em;background:#f6fafe;border-radius:0 0 12px 12px;display:none;}
+.qa-section {background:#e7f3fe;border-radius:6px;padding:1em;margin-bottom:12px;border-left:4px solid #6997ef;}
+.qa-section.green {background:#d5f5e7;border-left-color:#53ca87;}
+.qa-section.yellow {background:#fff6da;border-left-color:#e7b140;}
+.qa-section.pink {background:#fbe7ef;border-left-color:#d66aa5;}
+.qa-section .subtitle {font-weight:bold;margin-bottom:0.5em;}
+ul {margin: 0.4em 0 0.75em 1em;} li {margin-bottom:0.2em;}
+@media(max-width:700px){.container{padding:1.1em 0.3em;}.main-title{font-size:1.5em;}}
+</style>
+<script>
+function toggleQA(id){
+  var cont = document.getElementById(id);
+  var arrow = document.getElementById(id + 'arrow');
+  if (cont.style.display === "block") {
+    cont.style.display = "none";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    cont.style.display = "block";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="main-title">其他 FAQ</div>
+    <button class="return-btn" onclick="window.location.href='index.html'">返回問題分類</button>
+  </div>
+  <!-- Q1 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa1')">Q1 資安法施行細則調整重點？<span class="arrow" id="qa1arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa1">
+      <div class="qa-section">施行細則明確補充責任分級、資格審核、通報應變、委外管理等重點及法規適用流程。</div>
+    </div>
+  </div>
+  <!-- Q2 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa2')">Q2 近年資安違規案件裁罰原則？<span class="arrow" id="qa2arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa2">
+      <div class="qa-section yellow">根據主管機關公告，違反通報、維護計畫、專職人員設置、委外管理等均有裁罰依據。</div>
+    </div>
+  </div>
+  <!-- Q3 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa3')">Q3  民間單位是否可納入資安法規管理？<span class="arrow" id="qa3arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa3">
+      <div class="qa-section green">民間單位如承接政府授權業務，或具關鍵基礎設施影響力可納管，由主管機關審核。</div>
+    </div>
+  </div>
+  <!-- Q4 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa4')">Q4  資安規範是否會定期滾動修正？<span class="arrow" id="qa4arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa4">
+      <div class="qa-section">資安法及相關規範皆依最新國際趨勢、國內實務定期滾動修正。</div>
+    </div>
+  </div>
+  <!-- Q5 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa5')">Q5  主管機關協助資安問題申訴管道？<span class="arrow" id="qa5arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa5">
+      <div class="qa-section green">可至數位發展部/資通安全署官網線上申訴專區或來電專線反映資安問題。</div>
+    </div>
+  </div>
+  <!-- Q6 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa6')">Q6  法規修正諮詢窗口及流程？<span class="arrow" id="qa6arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa6">
+      <div class="qa-section yellow">各主管機關均設有專責諮詢窗口，可線上預約或親至洽公處申辦諮詢，流程依公告為主。</div>
+    </div>
+  </div>
+  <!-- Q7 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa7')">Q7  適用疑義及補正調整制度？<span class="arrow" id="qa7arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa7">
+      <div class="qa-section pink">納管對象如遇法規適用疑義，可依主管機關補正制度限期完成修正。</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

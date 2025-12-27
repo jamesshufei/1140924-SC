@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資安法常見問題 - 台灣資通安全管理法規知識庫</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', 'Microsoft JhengHei', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f5f7fa;
+}
+/* 導覽列樣式 */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+nav .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+nav a:hover {
+    color: #667eea;
+}
+/* Hero 區塊 */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 120px 2rem 80px;
+    text-align: center;
+    margin-top: 60px;
+}
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.8s ease;
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+/* FAQ主按鈕區域 - 文字居中+色塊 */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+.faq-btn {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 13px;
+    border: none;
+    cursor: pointer;
+    padding: 0.9em 2.3em;
+    font-size: 1.08em;
+    box-shadow: 0 2px 11px #e8eaf3;
+    margin: 0 0.2em 1.2em 0;
+    text-decoration: none;
+    min-width: 186px;
+    min-height: 58px;
+    background: none;
+    transition: background 0.19s, color 0.18s;
+}
+.btn-primary { background: linear-gradient(90deg, #5087f3, #7e62cb); color: #fff;}
+.btn-primary:hover {background: linear-gradient(90deg, #375b9c, #61508b);}
+.btn-secondary {background: linear-gradient(90deg, #6fa9e7, #80bfc0); color:#fff;}
+.btn-secondary:hover {background: linear-gradient(90deg, #366f95, #4ca0ad);}
+.btn-info {background: linear-gradient(90deg,#5dc7d6,#71b7ef); color:#fff;}
+.btn-info:hover {background: linear-gradient(90deg, #3699a6, #3199c4);}
+.pdf-btn {
+    background: linear-gradient(90deg,#5087f3 0%,#7e62cb 100%);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.09em;
+    padding: 0.88em 2.2em;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 9px #e8eaf3;
+    margin: 0.6em 0 1.4em 1em;
+}
+.pdf-btn:hover {
+    background: linear-gradient(90deg, #3f67b6 0%, #5c418c 100%);
+}
+
+/* 容器樣式 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+/* 區塊標題 */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #2d3748;
+}
+.section-subtitle {
+    text-align: center;
+    color: #718096;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+.about {
+    background: white;
+}
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+.user-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+.user-card:hover {
+    transform: translateY(-5px);
+}
+.user-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.about-image {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+.category-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+.category-card h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+.category-card p {
+    color: #718096;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+.category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+.tag {
+    background: #edf2f7;
+    color: #667eea;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+.category-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s;
+}
+.category-link:hover {
+    gap: 1rem;
+}
+.updates {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+.updates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+.update-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.update-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+.update-card p {
+    opacity: 0.9;
+    line-height: 1.8;
+}
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+.stat-item {
+    text-align: center;
+}
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.stat-label {
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+.timeline-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+}
+.timeline-date {
+    min-width: 120px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.timeline-content {
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid white;
+}
+.timeline-content h4 {
+    margin-bottom: 0.5rem;
+}
+/* 頁尾 */
+footer {
+    background: #2d3748;
+    color: white;
+    padding: 3rem 2rem 1rem;
+}
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: #667eea;
+}
+.footer-section ul {
+    list-style: none;
+}
+.footer-section a {
+    color: #cbd5e0;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s;
+}
+.footer-section a:hover {
+    color: white;
+}
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #cbd5e0;
+}
+/* 動畫 */
+@keyframes fadeInUp {
+    from {opacity: 0;transform: translateY(30px);}
+    to {opacity: 1;transform: translateY(0);}
+}
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .hero h1 {font-size: 2rem;}
+    .hero p {font-size: 1rem;}
+    nav ul {display: none;}
+    .section-title {font-size: 2rem;}
+    .timeline-item {flex-direction: column;gap: 0.5rem;}
+}
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: #fff;   /* 依你主題選擇顏色 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 可選，陰影美化 */
+}
+body {
+  padding-top: 60px; /* 依導覽列高度調整，避免內容被遮蓋 */
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">資安法常見問題</div>
+            <ul>
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#about">關於</a></li>
+                <li><a href="#categories">分類</a></li>
+                <li><a href="#updates">修法重點</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero 區塊 -->
+    <section class="hero" id="home">
+        <h1>歡迎來到<br>資安法常見問題</h1>
+        <p>一個讓你查詢及了解的知識角落<br>為資訊人員、資安人員，以及機關主管提供專門的資安法諮詢服務</p>
+        <div class="hero-buttons">
+            <a href="#categories" class="btn btn-primary faq-btn">開始查詢</a>
+             <a href="#updates" class="btn btn-secondary faq-btn">查看修正對照</a>
+            <a href="114Q3 FAQ 完整版.pdf" class="btn btn-info faq-btn" target="_blank">114Q3 FAQ 完整版</a>        </div>
+    </section>
+
+    <!-- 關於我們 -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">關於我們</h2>
+            <p class="section-subtitle">「資安常見問題」，不僅是一個資安管理法規的知識階梯；更是資安與資安交流達成的情懷，讓每一位顧客都能找到相對應的資安常見知識與顧客。</p>
+            
+            <div class="about-content">
+                <div class="user-card">
+                    <h3>資訊人員</h3>
+                    <p>技術實務指引</p>
+                </div>
+                <div class="user-card">
+                    <h3>資安人員</h3>
+                    <p>專業法規解讀</p>
+                </div>
+                <div class="user-card">
+                    <h3>機關主管</h3>
+                    <p>政策執行要點</p>
+                </div>
+            </div>
+
+           <div class="about-image"> <img src="./images/00.jpg" alt="資安專業團隊工作環境"> </div>
+
+        </div>
+    </section>
+
+    <!-- 常見問題分類 -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">常見問題分類</h2>
+            <p class="section-subtitle">根據資通安全管理法修正內容，我們整理了八大類常見問題，協助您快速找到所需資訊</p>
+            
+            <div class="categories-grid">
+                <!-- 分類1: 納管對象及範圍 -->
+                <div class="category-card">
+                    <h3>納管對象及範圍</h3>
+ <p>了解資安法的適用對象與管制範圍，包括公務機關、特定非公務機關的定義與認定</p>
+                    <div class="category-tags">
+                        <span class="tag">特定財團法人認定</span>
+                        <span class="tag">受政府控制事業範圍</span>
+                    </div>
+                    <a href="01.html" class="category-link">查看詳情 →</a>
+                </div>
+
+                <!-- 分類2: 機關責任等級 -->
+                <div class="category-card">
+                    <h3>機關責任等級</h3>
+                    <p>機關資安責任等級的劃分與規定，責任等級核定與備查程序</p>
+                    <div class="category-tags">
+                        <span class="tag">責任等級核定程序</span>
+                        <span class="tag">防護措施要求</span>
+                    </div>
+                    <a href="02.html" class="category-link">查看詳情 →</a>
+                </div>
+
+                <!-- 分類3: 人力及資格 -->
+                <div class="category-card">
+                    <h3>人力及資格</h3>
+                    <p>資安人員配置與資格要求，包括專職人員設置與適任性查核</p>
+                    <div class="category-tags">
+                        <span class="tag">專職人員設置</span>
+                        <span class="tag">適任性查核</span>
+                    </div>
+                    <a href="03.html" class="category-link">查看詳情 →</a>
+                </div>
+
+                <!-- 分類4: 其他應辦事項 -->
+                <div class="category-card">
+                    <h3>其他應辦事項</h3>
+                    <p>資安健檢、ISMS導入等技術性要求與實施細節</p>
+                    <div class="category-tags">
+                        <span class="tag">技術規範要求</span>
+                        <span class="tag">驗證機制</span>
+                    </div>
+                    <a href="04.html" class="category-link">查看詳情 →</a>
+                </div>
+
+                <!-- 分類5: 維護計畫摘要 -->
+                <div class="category-card">
+                    <h3>維護計畫摘要</h3>
+                    <p>資安維護計畫的內容與要求，實施情形報告流程</p>
+                    <div class="category-tags">
+                        <span class="tag">計畫內容要求</span>
+                        <span class="tag">實施情形報告</span>
+                    </div>
+                    <a href="05.html" class="category-link">查看詳情 →</a>
+                </div>
+
+                <!-- 分類6: 委外派遣及監督 -->
+                <div class="category-card">
+                    <h3>委外派遣及監督</h3>
+                    <p>委外廠商管理與資安要求，契約管理與責任劃分</p>
+                    <div class="category-tags">
+                        <span class="tag">委外管理要求</span>
+                        <span class="tag">第三方驗證</span>
+                    </div>
+                    <a href="06.html" class="category-link">查看詳情 →</a>
+                </div>
+
+                <!-- 分類7: 事件通報及應變 -->
+                <div class="category-card">
+                    <h3>事件通報及應變</h3>
+                    <p>資安事件的通報流程與應變措施，演練作業要求</p>
+                    <div class="category-tags">
+                        <span class="tag">通報流程</span>
+                        <span class="tag">應變機制</span>
+                    </div>
+                    <a href="07.html" class="category-link">查看詳情 →</a>
+                </div>
+
+                <!-- 分類8: 其他 -->
+                <div class="category-card">
+                    <h3>其他</h3>
+                    <p>資安相關綜合性問題與解答，法規適用疑義說明</p>
+                    <div class="category-tags">
+                        <span class="tag">綜合性問題</span>
+                        <span class="tag">法規適用疑義</span>
+                    </div>
+                    <a href="08.html" class="category-link">查看詳情 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 資通安全管理法修正重點 -->
+    <section class="updates" id="updates">
+        <div class="container">
+            <h2 class="section-title">資通安全管理法修正重點</h2>
+            <p style="color: #FFFACD;text-align: center;"">基於最新的法規修正草案，整理出關鍵修正要點與實務應用指引</p>
+            
+            <h3 style="font-size: 1.8rem; margin-bottom: 2rem;">主要修正要點</h3>
+            
+            <div class="updates-grid">
+                <div class="update-card">
+                    <h4>主管機關變更與權責強化</h4>
+                    <p>主管機關由行政院改為數位發展部，並明確指定資安專責機關辦理業務，建立更明確的權責體系。</p>
+                </div>
+
+                <div class="update-card">
+                    <h4>擴大資安法適用對象</h4>
+                    <p>新增「特定財團法人」、「受政府控制之事業、團體或機構」等定義，擴大納管範圍。</p>
+                </div>
+
+                <div class="update-card">
+                    <h4>危害國家資通安全產品限制</h4>
+                    <p>公務機關及特定非公務機關均明文禁止使用危害國家資通安全產品，並設有例外專案申請機制。</p>
+                </div>
+
+                <div class="update-card">
+                    <h4>強化資安專職人員設置</h4>
+                    <p>公務機關及特定非公務機關應依責任等級設置資安專職人員，並增訂適任性查核機制。</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">35</span>
+                    <span class="stat-label">修正條文數量</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">新增條文</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">罰鍰金額提高倍數</span>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.8rem; margin: 3rem 0 2rem;">修正重點時程</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2022年8月</div>
+                    <div class="timeline-content">
+                        <h4>數位發展部成立</h4>
+                        <p>主管機關正式由行政院變更為數位發展部</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2024年</div>
+                    <div class="timeline-content">
+                        <h4>修正草案提出</h4>
+                        <p>資通安全管理法修正草案條文對照表完成</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">待定</div>
+                    <div class="timeline-content">
+                        <h4>新法正式實施</h4>
+                        <p>施行日期由行政院定之</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>快速連結</h3>
+                <ul>
+                    <li><a href="#home">首頁</a></li>
+                    <li><a href="#about">關於我們</a></li>
+                    <li><a href="#categories">問題分類</a></li>
+                    <li><a href="#updates">修法重點</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>問題分類</h3>
+                <ul>
+                    <li><a href="01.html">納管對象及範圍</a></li>
+                    <li><a href="02.html">機關責任等級</a></li>
+                    <li><a href="03.html">人力及資格</a></li>
+                    <li><a href="04.html">其他應辦事項</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>聯絡資訊</h3>
+                <ul>
+                    <li>數位發展部</li>
+                    <li>資通安全署</li>
+                    <li>Email: info@moda.gov.tw</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 資安法常見問題知識庫. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 滾動顯示動畫
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.category-card, .update-card, .user-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 導覽列滾動效果
+        let lastScroll = 0;
+        const nav = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+
+            if (currentScroll > lastScroll) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+
+        // 統計數字計數動畫
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const finalValue = target.textContent;
+                    
+                    if (!isNaN(parseInt(finalValue))) {
+                        let current = 0;
+                        const increment = parseInt(finalValue) / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= parseInt(finalValue)) {
+                                target.textContent = finalValue;
+                                clearInterval(timer);
+                            } else {
+                                target.textContent = Math.floor(current);
+                            }
+                        }, 30);
+                    }
+                    statsObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(stat => statsObserver.observe(stat));
+    </script>
+
+</body>
+</html>

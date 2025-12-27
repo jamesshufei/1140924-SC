@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>資安專職人力及證照 FAQ</title>
+<style>
+body { font-family:"微軟正黑體", Arial, sans-serif; background:#f7f8fc;}
+.container {max-width:990px;margin:38px auto 0 auto;background:#fff;border-radius:24px;box-shadow:0 2px 18px #e7eaf3;padding:2.8em 2em;}
+.topbar {display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6em;}
+.main-title {font-size:2.4em;font-weight:bold;color:#2266b4;}
+.return-btn {background:#2266b4;padding:0.88em 2.2em;border-radius:10px;color:#fff;font-size:1.13em;border:none;cursor:pointer;font-weight:bold;box-shadow:0 2px 10px #dedede;}
+.return-btn:hover{background:#194b88;}
+.qa-box {margin-bottom:1.25em;}
+.qa-title {font-size:1.2em;font-weight:bold;background:#2266b4;color:#fff;display:flex;align-items:center;border-radius:10px 10px 0 0;padding:0.95em 1.2em;cursor:pointer;}
+.qa-title .arrow {margin-left:auto;font-size:1.6em;}
+.qa-content {padding:1.3em 2em 1em 2em;background:#f6fafe;border-radius:0 0 12px 12px;display:none;}
+.qa-section {background:#e7f3fe;border-radius:6px;padding:1em;margin-bottom:12px;border-left:4px solid #6997ef;}
+.qa-section.green {background:#d5f5e7;border-left-color:#53ca87;}
+.qa-section.yellow {background:#fff6da;border-left-color:#e7b140;}
+.qa-section.pink {background:#fbe7ef;border-left-color:#d66aa5;}
+.qa-section .subtitle {font-weight:bold;margin-bottom:0.5em;}
+ul {margin: 0.4em 0 0.75em 1em;} li {margin-bottom:0.2em;}
+@media(max-width:700px){.container{padding:1.1em 0.3em;}.main-title{font-size:1.4em;}}
+</style>
+<script>
+function toggleQA(id){
+  var cont = document.getElementById(id);
+  var arrow = document.getElementById(id + 'arrow');
+  if (cont.style.display === "block") {
+    cont.style.display = "none";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    cont.style.display = "block";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="main-title">資安專職人力及證照 FAQ</div>
+    <button class="return-btn" onclick="window.location.href='index.html'">返回問題分類</button>
+  </div>
+
+  <!-- Q1 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa1')">Q1 何謂資通安全專職人員？<span class="arrow" id="qa1arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa1">
+      <div class="qa-section">資通安全專職人員，指全職執行資通安全業務者（詳見分級辦法備註三、備註三、備註五說明）。</div>
+    </div>
+  </div>
+  <!-- Q2~Q23均已分色塊下方補充 -->
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa2')">Q2 職務內容？<span class="arrow" id="qa2arrow">&#9660;</span></div><div class="qa-content" id="qa2"><div class="qa-section"><ul><li>策略面、管理面、技術面三大項</li><li>策略：政策規劃、資源分配、成熟度協調</li><li>管理：維護計畫、事件處理、教育訓練、稽核</li><li>技術：情資、演練、安全檢測</li></ul></div><div class="qa-section green">各級機關須依分級辦法配足專職人力，按績效目標推動資安工作。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa3')">Q3 小型機關人力如何配置？<span class="arrow" id="qa3arrow">&#9660;</span></div><div class="qa-content" id="qa3"><div class="qa-section">優先人員調配，無缺額可用約聘／委外暫代，資訊業務小可由上級機關維運。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa4')">Q4 專職人員是否限定資訊單位或職系？<span class="arrow" id="qa4arrow">&#9660;</span></div><div class="qa-content" id="qa4"><div class="qa-section green">不限資訊單位職系，須取得主管機關公告認證證照。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa5')">Q5 多人成分加總可否合併？<span class="arrow" id="qa5arrow">&#9660;</span></div><div class="qa-content" id="qa5"><div class="qa-section yellow">不得以多人成分加總，須專人全職落實資安業務。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa6')">Q6 專業證照清單哪裡查？<span class="arrow" id="qa6arrow">&#9660;</span></div><div class="qa-content" id="qa6"><div class="qa-section pink">MODA資安法規專區證照清單：https://moda.gov.tw/ACS/laws/certificates/676</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa7')">Q7 資安專職人員資格條件？<span class="arrow" id="qa7arrow">&#9660;</span></div><div class="qa-content" id="qa7"><div class="qa-section green">需具備主管機關公告證照，並通過資格審查，定期進修。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa8')">Q8 適任性查核內容？<span class="arrow" id="qa8arrow">&#9660;</span></div><div class="qa-content" id="qa8"><div class="qa-section yellow">資安人員資格查核包含身分背景、犯罪紀錄、證照時效、專業培訓紀錄。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa9')">Q9 新手如何取得專業資格？<span class="arrow" id="qa9arrow">&#9660;</span></div><div class="qa-content" id="qa9"><div class="qa-section green">參加主管機關及官方委辦教育訓練，通過測驗取得證照。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa10')">Q10 人員配置與資格申報要點？<span class="arrow" id="qa10arrow">&#9660;</span></div><div class="qa-content" id="qa10"><div class="qa-section">機關應定期申報專職人數及證照資格，並統一登錄。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa11')">Q11 證照有效性認定與查詢方式？<span class="arrow" id="qa11arrow">&#9660;</span></div><div class="qa-content" id="qa11"><div class="qa-section yellow">可登錄官方查證平台、比對主管機關公告證照清冊。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa12')">Q12 進修要求與學分積點？<span class="arrow" id="qa12arrow">&#9660;</span></div><div class="qa-content" id="qa12"><div class="qa-section green">每1-2年完成進修課程及積點，符合主管機關進修規定。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa13')">Q13 未達標準或證照不足如何處理？<span class="arrow" id="qa13arrow">&#9660;</span></div><div class="qa-content" id="qa13"><div class="qa-section yellow">限期補足專職人力或證照，不符規定須改善，否則主管機關得處分。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa14')">Q14 委外服務人員資格規定？<span class="arrow" id="qa14arrow">&#9660;</span></div><div class="qa-content" id="qa14"><div class="qa-section green">廠商及派駐人員同樣需符合法定資安資格，機關須查核。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa15')">Q15 主管機關查核機制？<span class="arrow" id="qa15arrow">&#9660;</span></div><div class="qa-content" id="qa15"><div class="qa-section yellow">主管機關定期督查專職人員配置及資格合規性，合格可獎勵，違規處分。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa16')">Q16 進修認證課程有哪些？<span class="arrow" id="qa16arrow">&#9660;</span></div><div class="qa-content" id="qa16"><div class="qa-section">主管機關核定之資安進修班、線上課程、各級資安專業認證。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa17')">Q17 證照換新與資格延續規則？<span class="arrow" id="qa17arrow">&#9660;</span></div><div class="qa-content" id="qa17"><div class="qa-section green">依官方規定及資格期效，按期申辦換證、持續進修累積資格。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa18')">Q18 人力配置異動申報程序？<span class="arrow" id="qa18arrow">&#9660;</span></div><div class="qa-content" id="qa18"><div class="qa-section">異動應於一個月內向主管機關申報調整人力配置。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa19')">Q19 派遣人員合規性監督要點？<span class="arrow" id="qa19arrow">&#9660;</span></div><div class="qa-content" id="qa19"><div class="qa-section">機關須監督委外派遣人員資格，違規時須即改善與調整。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa20')">Q20 證照失效是否會影響任職？<span class="arrow" id="qa20arrow">&#9660;</span></div><div class="qa-content" id="qa20"><div class="qa-section yellow">證照失效者須立即補證，無法補證不可任職資安專職。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa21')">Q21 機關承辦人異動注意事項？<span class="arrow" id="qa21arrow">&#9660;</span></div><div class="qa-content" id="qa21"><div class="qa-section green">承辦人異動應同步完成人員申報及資格查核，以防疏失。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa22')">Q22 行政罰責及違規改善機制？<span class="arrow" id="qa22arrow">&#9660;</span></div><div class="qa-content" id="qa22"><div class="qa-section pink">重大違規將限期改正、逾期未改正者主管機關可依法處罰。</div></div></div>
+  <div class="qa-box"><div class="qa-title" onclick="toggleQA('qa23')">Q23 主管機關新規、FAQ查詢方式？<span class="arrow" id="qa23arrow">&#9660;</span></div><div class="qa-content" id="qa23"><div class="qa-section green">請至MODA及資通安全署官網查詢年度新規及FAQ公告。</div></div></div>
+</div>
+</body>
+</html>

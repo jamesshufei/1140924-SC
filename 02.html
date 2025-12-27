@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>機關責任等級分級 FAQ</title>
+<style>
+body { font-family: "微軟正黑體", Arial, sans-serif; background: #f7f8fc;}
+.container {max-width:990px;margin:38px auto 0 auto; background:#fff;border-radius:24px;box-shadow:0 2px 18px #e7eaf3;padding:3em 2em;}
+.topbar {display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3em;}
+.main-title {font-size:2.45em;font-weight:bold;color:#2266b4;letter-spacing:2px;}
+.return-btn {background:#2266b4;padding:0.88em 2.2em;border-radius:10px;color:#fff;font-size:1.13em;border:none;cursor:pointer;font-weight:bold;box-shadow:0 2px 10px #dedede;}
+.return-btn:hover {background:#194b88;}
+.qa-box {margin-bottom:1.3em;}
+.qa-title {font-size:1.2em;font-weight:bold;background:#2266b4;color:#fff;display:flex;align-items:center;border-radius:10px 10px 0 0;padding:0.95em 1.2em;cursor:pointer;}
+.qa-title .arrow {margin-left:auto;font-size:1.6em;}
+.qa-content {padding:1.3em 1.6em 1.1em 1.7em;background:#f5f9fc;border-radius:0 0 12px 12px;display:none;}
+.qa-subsection {background:#e7f3fe;border-radius:6px;padding:1em 1em 1em 2em;margin-bottom:1.2em;border-left:4px solid #6997ef;}
+.qa-subsection.green {background:#d5f5e7;border-left-color:#53ca87;}
+.qa-subsection.yellow {background:#fff6da;border-left-color:#e7b140;}
+.qa-subsection.pink {background:#fbe7ef;border-left-color:#d66aa5;}
+.qa-subsection .subtitle {font-weight:bold;margin-bottom:0.5em;}
+ul {margin:0.4em 0 0.7em 1em;} li {margin-bottom:0.2em;}
+@media(max-width:700px){.container{padding:1.1em 0.3em;}.main-title{font-size:1.5em;}}
+</style>
+<script>
+function toggleQA(id){
+  var cont = document.getElementById(id);
+  var arrow = document.getElementById(id + 'arrow');
+  if (cont.style.display === "block") {
+    cont.style.display = "none";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    cont.style.display = "block";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="main-title">機關責任等級分級 FAQ</div>
+    <button class="return-btn" onclick="window.location.href='index.html'">返回問題分類</button>
+  </div>
+<!-- Q1 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa1')">Q1：資安法的責任等級如何分級？各級有何差異？<span class="arrow" id="qa1arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa1">
+      <div class="qa-subsection">
+      <ul>
+        <li><b>A級：</b> 關鍵基礎設施、國家安全機關。</li>
+        <li><b>B級：</b> 中央二級機關、重要公營事業、直轄市政府。</li>
+        <li><b>C級：</b> 中央三級機關、一般縣市政府及重要財團法人。</li>
+        <li><b>D級：</b> 鄉鎮市區公所、小型單位。</li>
+        <li><b>E級：</b> 規模小、業務單純等機關(構)。</li>
+      </ul>
+      </div>
+      <div class="qa-subsection yellow">
+        <div class="subtitle">資安要求差異：</div>
+        包含資安長設置、專責單位人力、預算比例、演練與稽核頻率等。
+      </div>
+    </div>
+  </div>
+  <!-- Q2↓ -->
+<div class="qa-box">
+  <div class="qa-title" onclick="toggleQA('qa2')">Q2：全國性民眾或公務員個人資料檔案認定標準？ <span class="arrow" id="qa2arrow">&#9660;</span></div>
+  <div class="qa-content" id="qa2">
+    <div class="qa-subsection green">
+      指含括全國大部分民眾或公務員個資之檔案，如全國戶籍、地籍、社會保險等。
+    </div>
+  </div>
+</div>
+<!-- Q3↓ -->
+<div class="qa-box">
+  <div class="qa-title" onclick="toggleQA('qa3')">Q3：「受政府控制之事業」如何界定？ <span class="arrow" id="qa3arrow">&#9660;</span></div>
+  <div class="qa-content" id="qa3">
+    <div class="qa-subsection">
+      <div class="subtitle">界定標準：</div>
+      <ul>
+        <li>持股比例：政府直接或間接持有股分達50%以上</li>
+        <li>董監事案：政府派任或掌控董監事過半席次</li>
+        <li>決策主導：政府為主要決策人或具重大業務主導權</li>
+        <li>預算補助：主要經費來源為政府預算補助</li>
+      </ul>
+    </div>
+    <div class="qa-subsection green">
+      <div class="subtitle">典型案例：</div>
+      <ul>
+        <li>公營事業：台電、中油、台水、台糖</li>
+        <li>國營投資：中華郵政、台灣菸酒</li>
+        <li>政府投資事業：中華電信（政府持股35%但具實質影響力）</li>
+      </ul>
+    </div>
+    <div class="qa-subsection yellow">
+      <div class="subtitle">判斷重點：</div>
+      <ul>
+        <li>不僅看持股比例，更要看實質控管能力</li>
+        <li>政府派任董監事參數未達50%但有主控</li>
+        <li>特殊資本即使民股主導，仍可因公共任務納管</li>
+      </ul>
+    </div>
+    <div class="qa-subsection pink">
+      <div class="subtitle">實務建議：</div>
+      有疑慮請洽主管機關查詢政府持股或派任狀況，資訊部或發展部確認是否屬政府控制事業，以免觸法。
+    </div>
+  </div>
+</div>
+<!-- Q4↓ -->
+<div class="qa-box">
+  <div class="qa-title" onclick="toggleQA('qa4')">Q4：關鍵基礎設施提供者(CII)的認定標準是什麼？ <span class="arrow" id="qa4arrow">&#9660;</span></div>
+  <div class="qa-content" id="qa4">
+    <div style="font-weight:bold;margin-bottom:1em;">
+      關鍵基礎設施提供者，是指經主管機關公告，直接影響國家安全、社會正常運作之單位。
+    </div>
+    <div class="qa-subsection green">
+      <ul>
+        <li>電力、供水、醫療、交通、金融、通訊等產業核心單位</li>
+        <li>依資安法及公告分級，需定期稽核與防護演練</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Q5↓ -->
+<div class="qa-box">
+  <div class="qa-title" onclick="toggleQA('qa5')">Q5：私立學校是否適用資安法？ <span class="arrow" id="qa5arrow">&#9660;</span></div>
+  <div class="qa-content" id="qa5">
+    <div class="qa-subsection green">
+      私立學校如具「政府控制」事業身份則須納管，其餘依主管機關規定辦理。建議主動確認法律適用性以免風險。
+    </div>
+  </div>
+</div>
+<!-- Q6↓ -->
+<div class="qa-box">
+  <div class="qa-title" onclick="toggleQA('qa6')">Q6：市府責任等級提報是否包含市立學校？ <span class="arrow" id="qa6arrow">&#9660;</span></div>
+  <div class="qa-content" id="qa6">
+    <div class="qa-subsection green">
+      包含，地方政府應彙整市立學校一併提報責任等級。
+    </div>
+  </div>
+</div>
+<!-- Q7↓ -->
+<div class="qa-box">
+  <div class="qa-title" onclick="toggleQA('qa7')">Q7：新成立機關何時適用資安法？ <span class="arrow" id="qa7arrow">&#9660;</span></div>
+  <div class="qa-content" id="qa7">
+    <div class="qa-subsection yellow">
+      新設機關自成立日起即適用資安法，但各項資安機制有合理緩衝期。
+      <ul>
+        <li>立即：通報義務與基本防護</li>
+        <li>6個月內：設資安長、人員、維護計畫</li>
+        <li>1年內：完成演練、稽核</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Q8↓ -->
+<div class="qa-box">
+  <div class="qa-title" onclick="toggleQA('qa8')">Q8：等級或納管異動時需於何時提報？ <span class="arrow" id="qa8arrow">&#9660;</span></div>
+  <div class="qa-content" id="qa8">
+    <div class="qa-subsection yellow">
+      組織或業務調整、異動或新設機關成立1個月內須完成責任等級提報，依法履行主管機關公告。
+    </div>
+  </div>
+</div>
+<!-- Q9↓ -->
+<div class="qa-box">
+  <div class="qa-title" onclick="toggleQA('qa9')">Q9：機關如僅維護電腦、印表機，屬哪一級？ <span class="arrow" id="qa9arrow">&#9660;</span></div>
+  <div class="qa-content" id="qa9">
+    <div class="qa-subsection green">
+      僅維護設備無大型系統者，原則屬D級，僅需執行基礎資安措施。
+    </div>
+  </div>
+</div>
+<!-- Q10↓ -->
+<div class="qa-box">
+  <div class="qa-title" onclick="toggleQA('qa10')">Q10：如何查詢自身機關責任等級及是否屬納管對象？ <span class="arrow" id="qa10arrow">&#9660;</span></div>
+  <div class="qa-content" id="qa10">
+    <div class="qa-subsection green">
+      可至數位發展部資通安全署官網查詢納管對象與責任等級公告，或洽主管機關、機關資訊部。
+    </div>
+  </div>
+</div>
+<!-- Q11↓ -->
+<div class="qa-box">
+  <div class="qa-title" onclick="toggleQA('qa11')">Q11：市府、小型單位等分類責任等級申報常見疑問？ <span class="arrow" id="qa11arrow">&#9660;</span></div>
+  <div class="qa-content" id="qa11">
+    <div class="qa-subsection green">
+      包括學校、區公所、派出所等，皆由上級機關統一提報、彙整列級，申報內容依主管機關函示執行。
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

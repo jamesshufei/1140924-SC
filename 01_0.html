@@ -1,0 +1,1162 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>納管對象及範圍 - 資安法常見問題</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 0.2rem;
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        main {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .intro h2 {
+            margin-bottom: 1rem;
+        }
+
+        .faq-container {
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1.5rem;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #f8f9fa;
+        }
+
+        .faq-answer.active {
+            max-height: 5000px;
+        }
+
+        .faq-answer-content {
+            padding: 2rem;
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .faq-answer-content ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .faq-answer-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #FF9800;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box {
+            background: #fce4ec;
+            border-left: 4px solid #E91E63;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+        }
+
+        table td {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+        }
+
+        table tr:nth-child(even) {
+            background: #f7fafc;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            .faq-question {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            .faq-answer-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📋 納管對象及範圍</h1>
+            <p class="subtitle">資通安全管理法適用對象完整說明</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="intro">
+                <h2>關於納管對象</h2>
+                <p>資通安全管理法明確規範了適用對象與範圍，包括公務機關、特定非公務機關及關鍵基礎設施提供者。本頁面詳細說明各類納管對象的認定標準、適用條件及相關責任。</p>
+            </div>
+
+            <div class="faq-container">
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q1: 資安法的納管對象有哪些?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>資通安全管理法(資安法)的納管對象主要分為三大類:</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>1. 公務機關</strong>
+                                <ul>
+                                    <li><strong>中央機關:</strong> 總統府、五院及所屬各級機關</li>
+                                    <li><strong>地方機關:</strong> 直轄市政府、縣市政府、鄉鎮市區公所</li>
+                                    <li><strong>民意機關:</strong> 各級民意機關(立法院、議會等)</li>
+                                    <li><strong>司法機關:</strong> 各級法院及檢察機關</li>
+                                </ul>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>2. 特定非公務機關</strong>
+                                <ul>
+                                    <li><strong>公營事業:</strong> 政府持股或控制≥50%的事業</li>
+                                    <li><strong>政府捐助之財團法人:</strong> 政府捐助≥50%且具公共性質</li>
+                                    <li><strong>行政法人:</strong> 依法設立的行政法人</li>
+                                    <li><strong>政府委託行使公權力之團體:</strong> 受託辦理特定公務的民間組織</li>
+                                </ul>
+                            </div>
+
+                            <div class="warning-box">
+                                <strong>3. 關鍵基礎設施提供者(CII)</strong>
+                                <ul>
+                                    <li><strong>能源:</strong> 電力、石油、天然氣供應業者</li>
+                                    <li><strong>水資源:</strong> 自來水、水庫管理單位</li>
+                                    <li><strong>通訊傳播:</strong> 電信業者、廣播電視業者</li>
+                                    <li><strong>交通:</strong> 鐵路、航空、港口、公路運輸業者</li>
+                                    <li><strong>金融:</strong> 銀行、證券、保險業者</li>
+                                    <li><strong>緊急救援與醫院:</strong> 大型醫療院所、緊急救護體系</li>
+                                    <li><strong>高科技園區:</strong> 科學園區管理局及重要廠商</li>
+                                    <li><strong>政府機關與國防:</strong> 國防相關單位與設施</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>⚠️ 重要:</strong> 各主管機關會定期公告並更新納管對象名單，建議定期至數位發展部資通安全署官網查詢最新資訊。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q2: 什麼是「特定非公務機關」?如何認定?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>「特定非公務機關」是指雖非政府機關，但因與政府關係密切或執行公共任務，而被納入資安法規範的組織。</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>認定標準包括:</strong>
+                                <ul>
+                                    <li><strong>政府捐助之財團法人:</strong>
+                                        <ul>
+                                            <li>政府捐助財產總額達50%以上</li>
+                                            <li>由政府指派董事、監察人席次達1/2以上</li>
+                                            <li>具公共性質或執行政府委辦業務</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>政府持股/控制之事業:</strong>
+                                        <ul>
+                                            <li>政府持股比例達50%以上</li>
+                                            <li>或政府實質控制其經營權</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>行政法人:</strong>
+                                        <ul>
+                                            <li>依特別法設立(如國家表演藝術中心、國家災害防救科技中心等)</li>
+                                            <li>具公法人地位但運作較具彈性</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>✓ 實務案例:</strong>
+                                <ul>
+                                    <li><strong>納管:</strong> 中華郵政、台灣電力公司、中油公司、台糖公司(政府持股100%)</li>
+                                    <li><strong>納管:</strong> 工業技術研究院、資訊工業策進會(政府捐助≥50%)</li>
+                                    <li><strong>不納管:</strong> 純民間企業(即使承接政府標案)</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>⚠️ 注意:</strong> 若不確定是否為特定非公務機關，可向主管機關(如經濟部、數位發展部)或數位發展部資通安全署查詢確認。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q3: 「受政府控制之事業」如何界定?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>「受政府控制之事業」是指政府透過持股、人事任命或其他方式，實質掌握經營決策權的事業體。</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>界定標準:</strong>
+                                <ul>
+                                    <li><strong>持股比例:</strong> 政府直接或間接持有股份達50%以上</li>
+                                    <li><strong>董事席次:</strong>
+繼續完成剩餘的HTML程式碼：
+
+```html
+ 政府指派或實質控制董事會過半數席次</li>
+                                    <li><strong>經營決策權:</strong> 政府對重大經營決策具有決定性影響力</li>
+                                    <li><strong>預算依賴:</strong> 主要經費來源為政府預算或補助</li>
+                                </ul>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>✓ 典型案例:</strong>
+                                <ul>
+                                    <li><strong>公營事業:</strong> 台電、中油、台水、台糖(政府持股100%)</li>
+                                    <li><strong>國營事業:</strong> 中華郵政、台灣菸酒(政府全資擁有)</li>
+                                    <li><strong>政府投資事業:</strong> 中華電信(政府持股35%但具實質影響力)</li>
+                                </ul>
+                            </div>
+
+                            <div class="warning-box">
+                                <strong>⚠️ 判斷重點:</strong>
+                                <ul>
+                                    <li>不僅看持股比例，更要看實質控制能力</li>
+                                    <li>政府若能主導董事會決議，即使持股未達50%仍可能被認定</li>
+                                    <li>特許事業(如電信、能源)即使民營化，仍可能因公共性而納管</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>📌 實務建議:</strong> 若事業體與政府有投資或業務關係，建議主動向經濟部或數位發展部確認是否屬於納管對象，以免因不知情而違法。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q4: 關鍵基礎設施提供者(CII)的認定標準是什麼?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>關鍵基礎設施提供者(Critical Information Infrastructure, CII)是指其資通系統或服務一旦遭受破壞，將嚴重影響國家安全、社會秩序或公共利益的組織。</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>八大領域認定標準:</strong>
+                                <ul>
+                                    <li><strong>1. 能源領域:</strong>
+                                        <ul>
+                                            <li>發電量達一定規模的電力公司</li>
+                                            <li>石油、天然氣儲運設施營運者</li>
+                                            <li>再生能源重要供應商</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>2. 水資源領域:</strong>
+                                        <ul>
+                                            <li>供水人口達一定規模的自來水公司</li>
+                                            <li>重要水庫、淨水廠管理單位</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>3. 通訊傳播領域:</strong>
+                                        <ul>
+                                            <li>第一類電信事業(中華電信、台灣大哥大等)</li>
+                                            <li>主要ISP業者、數據中心營運商</li>
+                                            <li>重要廣播電視業者</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>4. 交通領域:</strong>
+                                        <ul>
+                                            <li>台鐵、高鐵、捷運系統</li>
+                                            <li>主要國際機場、商港</li>
+                                            <li>高速公路管理單位</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>5. 金融領域:</strong>
+                                        <ul>
+                                            <li>系統性重要銀行(如台銀、兆豐等)</li>
+                                            <li>證券交易所、期貨交易所</li>
+                                            <li>票據交換所、財金資訊公司</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>6. 緊急救援與醫院:</strong>
+                                        <ul>
+                                            <li>醫學中心及區域教學醫院</li>
+                                            <li>119緊急救護指揮中心</li>
+                                            <li>重要血庫、疫苗儲存設施</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>7. 高科技園區:</strong>
+                                        <ul>
+                                            <li>竹科、中科、南科管理局</li>
+                                            <li>園區內重要半導體、電子廠商</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>8. 政府機關與國防:</strong>
+                                        <ul>
+                                            <li>國防部及所屬單位</li>
+                                            <li>關鍵政府資訊系統營運機關</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>✓ 認定程序:</strong>
+                                <ol>
+                                    <li>由各目的事業主管機關(如金管會、交通部)初步評估</li>
+                                    <li>報請數位發展部審查認定</li>
+                                    <li>正式公告為關鍵基礎設施提供者</li>
+                                    <li>定期(每2年)檢討調整名單</li>
+                                </ol>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>⚠️ 重要:</strong> CII業者須遵守更嚴格的資安規範，包括強制通報、定期演練、專責人力配置等，違反規定可處100萬元以上罰鍰。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q5: 私立學校是否適用資安法?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>私立學校原則上不適用資安法，但有例外情況。</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>適用情況分析:</strong>
+                                <ul>
+                                    <li><strong>❌ 原則不適用:</strong>
+                                        <ul>
+                                            <li>一般私立大專院校</li>
+                                            <li>私立高中職、國中小</li>
+                                            <li>私立幼兒園</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>✅ 例外適用情況:</strong>
+                                        <ul>
+                                            <li>受託辦理政府委辦業務時(如招生考試、學籍管理系統)</li>
+                                            <li>使用政府補助經費建置的資通系統</li>
+                                            <li>與公立學校共用的重要資訊系統</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>✓ 實務案例:</strong>
+                                <ul>
+                                    <li><strong>不適用:</strong> 私立大學的校務行政系統(自行建置營運)</li>
+                                    <li><strong>適用:</strong> 承辦大學入學考試的私校(受託行使公權力)</li>
+                                    <li><strong>適用:</strong> 使用教育部補助建置的學習歷程檔案系統</li>
+                                </ul>
+                            </div>
+
+                            <div class="warning-box">
+                                <strong>⚠️ 注意事項:</strong>
+                                <ul>
+                                    <li>雖不直接適用資安法，但仍須遵守個資法規定</li>
+                                    <li>教育部可透過補助或評鑑要求私校提升資安水準</li>
+                                    <li>建議參考資安法標準建立校內資安管理機制</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>📌 建議:</strong> 私立學校雖非強制納管，但因涉及大量師生個資，建議主動參考資安法規範，建立適當的資安防護措施。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q6: 公營事業與國營事業有何差異?資安責任是否不同?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>公營事業與國營事業在法律定義、組織型態上有所不同，但在資安法下均屬納管對象。</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>定義與差異:</strong>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>項目</th>
+                                            <th>國營事業</th>
+                                            <th>公營事業</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>定義</strong></td>
+                                            <td>中央政府100%持股</td>
+                                            <td>政府持股≥50%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>法源</strong></td>
+                                            <td>國營事業管理法</td>
+                                            <td>各事業組織條例</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>典型案例</strong></td>
+                                            <td>台電、中油、台水、台糖</td>
+                                            <td>中華電信、兆豐銀行</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>人事制度</strong></td>
+                                            <td>適用國營事業人員進用規定</td>
+                                            <td>依公司法或各別法規</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>監督機關</strong></td>
+                                            <td>經濟部(多數)</td>
+                                            <td>各主管機關</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>✓ 資安法適用情況:</strong>
+                                <ul>
+                                    <li><strong>兩者均屬「特定非公務機關」</strong></li>
+                                    <li><strong>均須遵守資安法完整規範</strong></li>
+                                    <li><strong>責任等級由主管機關核定(通常為B或C級)</strong></li>
+                                    <li><strong>須設置資安長、資安專責單位</strong></li>
+                                    <li><strong>須編列資安預算(占資訊預算7-12%)</strong></li>
+                                </ul>
+                            </div>
+
+                            <div class="warning-box">
+                                <strong>⚠️ 特殊考量:</strong>
+                                <ul>
+                                    <li><strong>國營事業:</strong> 因涉及民生必需(水電油氣)，多同時為CII，資安要求更嚴</li>
+                                    <li><strong>公營事業:</strong> 若涉及金融、通訊領域，也可能被認定為CII</li>
+                                    <li><strong>民營化事業:</strong> 即使政府持股降至50%以下，若仍具關鍵性，可能持續納管</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>📌 結論:</strong> 無論是國營或公營事業，在資安法下的基本責任相同，差異主要在於責任等級認定與是否同時為CII。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q7: 行政法人與財團法人有何不同?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>行政法人與財團法人在法律性質、設立方式、監督機制上有顯著差異，在資安法的適用條件也不同。</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>核心差異比較:</strong>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>項目</th>
+                                            <th>行政法人</th>
+                                            <th>財團法人</th>
+繼續完成剩餘的HTML程式碼：
+
+```html
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>法律性質</strong></td>
+                                            <td>公法人</td>
+                                            <td>私法人</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>設立依據</strong></td>
+                                            <td>須有專法(如行政法人法)</td>
+                                            <td>民法及捐助章程</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>設立目的</strong></td>
+                                            <td>執行特定公共任務</td>
+                                            <td>公益或特定目的</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>經費來源</strong></td>
+                                            <td>主要為政府預算</td>
+                                            <td>捐助財產及孳息</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>監督方式</strong></td>
+                                            <td>監督機關直接監督</td>
+                                            <td>目的事業主管機關監督</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>人事制度</strong></td>
+                                            <td>自訂人事規章(經核定)</td>
+                                            <td>依勞基法或自訂規定</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>✓ 資安法適用情況:</strong>
+                                <ul>
+                                    <li><strong>行政法人:</strong>
+                                        <ul>
+                                            <li>全部納入資安法規範(無條件適用)</li>
+                                            <li>案例: 國家表演藝術中心、國家災害防救科技中心、國家運動訓練中心</li>
+                                            <li>責任等級通常為B或C級</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>財團法人:</strong>
+                                        <ul>
+                                            <li>僅「政府捐助≥50%」者適用</li>
+                                            <li>案例: 工研院、資策會、外貿協會</li>
+                                            <li>責任等級依業務性質核定</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="warning-box">
+                                <strong>⚠️ 判斷要點:</strong>
+                                <ul>
+                                    <li><strong>行政法人:</strong> 查看是否有專門的組織法(如「國家表演藝術中心設置條例」)</li>
+                                    <li><strong>財團法人:</strong> 需確認政府捐助比例，可查詢「全國法規資料庫」或主管機關公告</li>
+                                    <li><strong>混合型態:</strong> 部分組織可能同時具備兩種性質，以法律明文規定為準</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>📌 實務建議:</strong> 若不確定組織屬性，可至數位發展部資通安全署網站查詢「資安法適用對象名單」，或向主管機關確認。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q8: 承包政府標案的廠商是否適用資安法?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>承包政府標案的一般民間廠商原則上不直接適用資安法，但須遵守契約中的資安要求。</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>適用情況分析:</strong>
+                                <ul>
+                                    <li><strong>❌ 不直接適用資安法:</strong>
+                                        <ul>
+                                            <li>純民間企業身分的承包商</li>
+                                            <li>僅因承接政府標案而與政府往來</li>
+                                            <li>政府持股或控制未達標準</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>✅ 須遵守契約資安規範:</strong>
+                                        <ul>
+                                            <li>政府採購契約中的資安條款</li>
+                                            <li>資通安全責任等級分級辦法相關要求</li>
+                                            <li>特定領域的資安標準(如個資法、金融資安規範)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>✓ 契約常見資安要求:</strong>
+                                <ul>
+                                    <li><strong>資安管理制度:</strong> 需建立符合ISO 27001或同等級的資安管理制度</li>
+                                    <li><strong>人員管理:</strong> 簽署保密協定、背景調查、離職管制</li>
+                                    <li><strong>系統安全:</strong> 弱點掃描、滲透測試、安全性更新</li>
+                                    <li><strong>資料保護:</strong> 加密傳輸、存取控制、備份機制</li>
+                                    <li><strong>事件通報:</strong> 發生資安事件須於規定時間內通報機關</li>
+                                    <li><strong>稽核配合:</strong> 接受機關或第三方的資安稽核</li>
+                                </ul>
+                            </div>
+
+                            <div class="warning-box">
+                                <strong>⚠️ 特殊情況:</strong>
+                                <ul>
+                                    <li><strong>受託行使公權力:</strong> 若受託辦理具公權力性質業務(如戶政系統維護)，可能被認定為適用對象</li>
+                                    <li><strong>CII供應商:</strong> 若為關鍵基礎設施的重要供應商，可能被要求比照CII標準</li>
+                                    <li><strong>長期委外:</strong> 長期負責政府核心系統營運的廠商，可能面臨更嚴格要求</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>📌 實務建議:</strong>
+                                <ul>
+                                    <li>投標前詳閱契約資安條款，評估成本與能力</li>
+                                    <li>建議取得ISO 27001認證，提升競標優勢</li>
+                                    <li>建立資安事件應變機制，確保能即時通報處理</li>
+                                    <li>定期教育訓練，提升員工資安意識</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q9: 資安法的責任等級如何分級?各級有何差異?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>資安法將納管機關(構)分為A、B、C、D、E五個責任等級，等級越高資安要求越嚴格。</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>五級分類標準:</strong>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>等級</th>
+                                            <th>適用對象</th>
+                                            <th>典型案例</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>A級</strong></td>
+                                            <td>關鍵基礎設施提供者(CII)<br>及國家安全相關機關</td>
+                                            <td>國防部、台電、中華電信<br>主要銀行、高鐵</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>B級</strong></td>
+                                            <td>中央二級機關<br>及重要公營事業</td>
+                                            <td>各部會、直轄市政府<br>中油、台水</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>C級</strong></td>
+                                            <td>中央三級機關<br>縣市政府、大型財團法人</td>
+                                            <td>署、局級機關<br>工研院、資策會</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>D級</strong></td>
+                                            <td>中央四級機關<br>鄉鎮市區公所</td>
+                                            <td>分局、分署<br>區公所</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>E級</strong></td>
+                                            <td>規模較小或業務<br>單純的機關(構)</td>
+                                            <td>小型財團法人<br>村里辦公處</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>✓ 各級資安要求差異:</strong>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>項目</th>
+                                            <th>A級</th>
+                                            <th>B級</th>
+                                            <th>C級</th>
+                                            <th>D/E級</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>資安長</strong></td>
+                                            <td>專任副首長層級</td>
+                                            <td>專任或兼任</td>
+                                            <td>兼任</td>
+                                            <td>兼任</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>專責單位</strong></td>
+                                            <td>必設(一級單位)</td>
+                                            <td>必設</td>
+                                            <td>必設或指定</td>
+                                            <td>指定人員</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>專責人力</strong></td>
+                                            <td>≥7人</td>
+                                            <td>≥4人</td>
+                                            <td>≥2人</td>
+                                            <td>≥1人</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>資安預算</strong></td>
+                                            <td>≥12%</td>
+                                            <td>≥10%</td>
+                                            <td>≥8%</td>
+                                            <td>≥7%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>演練頻率</strong></td>
+                                            <td>每年2次以上</td>
+                                            <td>每年1次</td>
+                                            <td>每年1次</td>
+                                            <td>每2年1次</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>稽核頻率</strong></td>
+                                            <td>每年1次</td>
+                                            <td>每年1次</td>
+                                            <td>每2年1次</td>
+                                            <td>每3年1次</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="warning-box">
+                                <strong>⚠️ 重要注意事項:</strong>
+                                <ul>
+                                    <li>責任等級由主管機關核定，並報數位發展部備查</li>
+                                    <li>等級每2年檢討一次，可能因業務變化而調整</li>
+                                    <li>違反各級規定的罰則不同，A級最高可罰100萬元</li>
+                                    <li>資安預算百分比是指占「資訊預算」的比例，非總預算</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>📌 查詢方式:</strong> 可至數位發展部資通安全署網站查詢「資通安全責任等級分級」公告，確認自身機關(構)等級。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q10: 如何查詢我的機關(構)是否為資安法納管對象?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>有多種官方管道可查詢機關(構)是否為資安法納管對象及其責任等級。</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>官方查詢管道:</strong>
+                                <ul>
+                                    <li><strong>1. 數位發展部資通安全署官網:</strong>
+                                        <ul>
+                                            <li>網址: <a href="https://www.nics.nat.gov.tw" target="_blank">https://www.nics.nat.gov.tw</a></li>
+                                            <li>查詢路徑: 首頁 → 資安法專區 → 納管對象名單</li>
+                                            <li>提供完整的A至E級機關(構)名單及責任等級</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>2. 目的事業主管機關:</strong>
+                                        <ul>
+                                            <li>經濟部: 公營事業、工業相關</li>
+                                            <li>金管會: 金融機構</li>
+                                            <li>交通部: 運輸、通訊業者</li>
+                                            <li>教育部: 公立學校</li>
+                                            <li>衛福部: 醫療機構</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>3. 機關內部資安窗口:</strong>
+                                        <ul>
+                                            <li>詢問機關內資訊部門或資安專責單位</li>
+                                            <li>查閱機關資通安全維護計畫</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>✓ 自我判斷步驟:</strong>
+                                <ol>
+                                    <li><strong>確認組織性質:</strong>
+                                        <ul>
+                                            <li>是否為政府機關? → 是 → 適用資安法</li>
+                                            <li>是否為公營/國營事業? → 是 → 適用資安法</li>
+                                            <li>是否為行政法人? → 是 → 適用資安法</li>
+                                            <li>是否為政府捐助≥50%的財團法人? → 是 → 適用資安法</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>查詢官方名單:</strong> 至資安署網站確認是否列入納管對象</li>
+                                    <li><strong>確認責任等級:</strong> 查看公告的A至E級分類</li>
+                                    <li><strong>了解具體要求:</strong> 下載該等級的資安規範文件</li>
+                                </ol>
+                            </div>
+
+                            <div class="warning-box">
+                                <strong>⚠️ 常見疑問處理:</strong>
+                                <ul>
+                                    <li><strong>Q: 名單上找不到我的機關?</strong><br>
+                                        A: 可能屬於較大機關的附屬單位,以上級機關等級為準,或直接向主管機關確認。</li>
+                                    <li><strong>Q: 機關改組後等級是否改變?</strong><br>
+                                        A: 需重新核定,應主動向主管機關申請等級認定。</li>
+                                    <li><strong>Q: 私人企業如何確認?</strong><br>
+                                        A: 除非是CII或政府持股≥50%,否則一般不適用。</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>📌 聯絡資訊:</strong>
+                                <ul>
+                                    <li><strong>數位發展部資通安全署:</strong> (02)2311-8888</li>
+                                    <li><strong>資安諮詢信箱:</strong> nics@nics.nat.gov.tw</li>
+                                    <li><strong>緊急通報專線:</strong> 0800-885-066 (24小時)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q11 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Q11: 新成立的機關(構)何時開始適用資安法?</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>新成立的機關(構)自成立日起即適用資安法,但有合理的緩衝期以建置必要的資安機制。</strong></p>
+                            
+                            <div class="info-box">
+                                <strong>適用時程說明:</strong>
+                                <ul>
+                                    <li><strong>立即適用事項(成立日起):</strong>
+                                        <ul>
+                                            <li>資安事件通報義務</li>
+                                            <li>基本資安防護措施(防火牆、防毒軟體等)</li>
+                                            <li>人員資安意識要求</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>6個月內完成:</strong>
+                                        <ul>
+                                            <li>指定資安長及專責人員</li>
+                                            <li>訂定資通安全維護計畫</li>
+                                            <li>建立資安管理組織架構</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>1年內完成:</strong>
+                                        <ul>
+                                            <li>完成資安健檢或稽核</li>
+                                            <li>完成資安演練</li>
+                                            <li>建立完整的資安管理制度</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="success-box">
+                                <strong>✓ 建議作法:</strong>
+                                <ol>
+                                    <li><strong>籌備期(成立前):</strong>
+                                        <ul>
+                                            <li>於籌備階段即規劃資安組織與預算</li>
+                                            <li>參考同等級機關的資安維護計畫</li>
+                                            <li>預先培訓資安專責人員</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>成立初期(0-6個月):</strong>
+                                        <ul>
+                                            <li>向主管機關申請責任等級核定</li>
+                                            <li>建立資安管理制度文件</li>
+                                            <li>採購必要的資安設備與服務</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>穩定期(6-12個月):</strong>
+                                        <ul>
+                                            <li>執行首次資安演練</li>
+                                            <li>完成首次資安稽核</li>
+                                            <li>依稽核結果改善缺失</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <div class="warning-box">
+                                <strong>⚠️ 特別注意:</strong>
+                                <ul>
+                                    <li><strong>不得以「新成立」為由拒絕通報資安事件</strong></li>
+                                    <li><strong>若因組織改造而成立,應承接原機關的資安責任</strong></li>
+                                    <li><strong>CII業者即使新成立,仍須立即符合較高標準</strong></li>
+                                    <li><strong>可向主管機關申請輔導資源或專案協助</strong></li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong>📌 實務案例:</strong>
+                                <ul>
+                                    <li><strong>數位發展部(2022年成立):</strong> 於成立前即完成資安組織規劃,成立日起立即運作。</li>
+                                    <li><strong>新設立的行政法人:</strong> 通常在籌備階段即納入資安規劃,確保成立時能符合基本要求。</li>
+                                    <li><strong>縣市合併後的新機關:</strong> 承接原機關資安責任,並於合理期間內完成整合。</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                <strong>💡 資源協助:</strong>
+                                <ul>
+                                    <li>數位發展部提供「資安輔導團」協助新機關建置</li>
+                                    <li>可參加資安署舉辦的「新手機關資安訓練班」</li>
+                                    <li>可申請「資安經費補助計畫」減輕初期負擔</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a href="index.html" class="back-button">← 返回問題分類</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 資安法常見問題知識庫 | 台灣資通安全管理法規資訊平台</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">本網站內容僅供參考，實際法規適用請以主管機關公告為準</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // 切換當前FAQ的狀態
+            if (isActive) {
+                answer.classList.remove('active');
+                button.classList.remove('active');
+            } else {
+                answer.classList.add('active');
+                button.classList.add('active');
+            }
+        }
+
+        // 頁面載入完成後初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 確保所有FAQ初始為收合狀態
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            const allQuestions = document.querySelectorAll('.faq-question');
+            
+            allAnswers.forEach(answer => {
+                answer.classList.remove('active');
+            });
+            
+            allQuestions.forEach(question => {
+                question.classList.remove('active');
+            });
+
+            // 載入動畫
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.5s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 50);
+                }, index * 100);
+            });
+
+            // 平滑滾動
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+

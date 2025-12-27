@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>事件通報及應變 FAQ</title>
+<style>
+body { font-family:"微軟正黑體", Arial, sans-serif; background:#f7f8fc;}
+.container {max-width:990px;margin:38px auto 0 auto;background:#fff;border-radius:24px;box-shadow:0 2px 18px #e7eaf3;padding:2.8em 2em;}
+.topbar {display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6em;}
+.main-title {font-size:2.4em;font-weight:bold;color:#2266b4;}
+.return-btn {background:#2266b4;padding:0.88em 2.2em;border-radius:10px;color:#fff;font-size:1.13em;border:none;cursor:pointer;font-weight:bold;box-shadow:0 2px 10px #dedede;}
+.return-btn:hover{background:#194b88;}
+.qa-box {margin-bottom:1.25em;}
+.qa-title {font-size:1.2em;font-weight:bold;background:#2266b4;color:#fff;display:flex;align-items:center;border-radius:10px 10px 0 0;padding:0.95em 1.2em;cursor:pointer;}
+.qa-title .arrow {margin-left:auto;font-size:1.6em;}
+.qa-content {padding:1.3em 2em 1em 2em;background:#f6fafe;border-radius:0 0 12px 12px;display:none;}
+.qa-section {background:#e7f3fe;border-radius:6px;padding:1em;margin-bottom:12px;border-left:4px solid #6997ef;}
+.qa-section.green {background:#d5f5e7;border-left-color:#53ca87;}
+.qa-section.yellow {background:#fff6da;border-left-color:#e7b140;}
+.qa-section.pink {background:#fbe7ef;border-left-color:#d66aa5;}
+.qa-section .subtitle {font-weight:bold;margin-bottom:0.5em;}
+ul {margin: 0.4em 0 0.75em 1em;} li {margin-bottom:0.2em;}
+@media(max-width:700px){.container{padding:1.1em 0.3em;}.main-title{font-size:1.5em;}}
+</style>
+<script>
+function toggleQA(id){
+  var cont = document.getElementById(id);
+  var arrow = document.getElementById(id + 'arrow');
+  if (cont.style.display === "block") {
+    cont.style.display = "none";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    cont.style.display = "block";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="main-title">事件通報及應變 FAQ</div>
+    <button class="return-btn" onclick="window.location.href='index.html'">返回問題分類</button>
+  </div>
+  <!-- Q1 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa1')">Q1 資安事件定義與分類？<span class="arrow" id="qa1arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa1">
+      <div class="qa-section">
+        資安事件分為資訊系統遭受入侵、資料洩漏、設備失控、重要服務中斷、重大違規操作等。分級規定及典型案例見主管機關公告與資通安全法法條說明。
+      </div>
+    </div>
+  </div>
+  <!-- Q2 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa2')">Q2 通報時程及責任人是誰？<span class="arrow" id="qa2arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa2">
+      <div class="qa-section yellow">發生事件應即時通報主管機關，責任人為機關資安長暨相關管理人員。</div>
+      <div class="qa-section green">不同等級機關應依公告流程於規定時限內完成通報。</div>
+    </div>
+  </div>
+  <!-- Q3 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa3')">Q3 應變程序重點事項？<span class="arrow" id="qa3arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa3">
+      <div class="qa-section">
+        包括立即啟動資安應變計畫、事故現場隔離、資料保存、侵害分析並逐步回報主管機關。
+      </div>
+      <div class="qa-section yellow">事故與重大違規應優先通報、妥善保存證據及相關紀錄，以利後續追查與改進。</div>
+    </div>
+  </div>
+  <!-- Q4 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa4')">Q4 機關協調與跨部門合作怎麼執行？<span class="arrow" id="qa4arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa4">
+      <div class="qa-section green">
+        需主動聯繫資安專責部門及相關單位，協同處理，必要時得啟動跨部門快速通報與緊急支援機制。
+      </div>
+    </div>
+  </div>
+  <!-- Q5 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa5')">Q5 重大資安事件應有何演練？<span class="arrow" id="qa5arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa5">
+      <div class="qa-section yellow">應每年實施資安演練及通報演練，包括模擬攻擊事件及跨部門聯防。</div>
+      <div class="qa-section pink">演練成效須形成書面報告供主管機關查核。</div>
+    </div>
+  </div>
+  <!-- Q6 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa6')">Q6 通報/應變記錄與資料保存規範？<span class="arrow" id="qa6arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa6">
+      <div class="qa-section">通報及應變各步驟均須有文字及電子紀錄，保存期限依主管機關公告。</div>
+      <div class="qa-section green">重要證據資料須特別保存不得遺漏，防止刑事責任、行政責任追訴困難。</div>
+    </div>
+  </div>
+  <!-- Q7 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa7')">Q7 戴責事件存疑如何處理？<span class="arrow" id="qa7arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa7">
+      <div class="qa-section pink">如事件認定存疑，可提出案件由資安主管機關協助／判定。</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>機關責任等級分級 FAQ</title>
+<style>
+body { font-family: "微軟正黑體", Arial, sans-serif; background: #f7f8fc;}
+.container {max-width:990px;margin:38px auto 0 auto; background:#fff;border-radius:24px;box-shadow:0 2px 18px #e7eaf3;padding:3em 2em;}
+.topbar {display:flex;justify-content:space-between;align-items:center;margin-bottom:1.3em;}
+.main-title {font-size:2.45em;font-weight:bold;color:#2266b4;letter-spacing:2px;}
+.return-btn {background:#2266b4;padding:0.88em 2.2em;border-radius:10px;color:#fff;font-size:1.13em;border:none;cursor:pointer;font-weight:bold;box-shadow:0 2px 10px #dedede;}
+.return-btn:hover {background:#194b88;}
+.qa-box {margin-bottom:1.3em;}
+.qa-title {font-size:1.2em;font-weight:bold;background:#2266b4;color:#fff;display:flex;align-items:center;border-radius:10px 10px 0 0;padding:0.95em 1.2em;cursor:pointer;}
+.qa-title .arrow {margin-left:auto;font-size:1.6em;}
+.qa-content {padding:1.3em 1.6em 1.1em 1.7em;background:#f5f9fc;border-radius:0 0 12px 12px;display:none;}
+.qa-subsection {background:#e7f3fe;border-radius:6px;padding:1em 1em 1em 2em;margin-bottom:1.2em;border-left:4px solid #6997ef;}
+.qa-subsection.green {background:#d5f5e7;border-left-color:#53ca87;}
+.qa-subsection.yellow {background:#fff6da;border-left-color:#e7b140;}
+.qa-subsection.pink {background:#fbe7ef;border-left-color:#d66aa5;}
+.qa-subsection .subtitle {font-weight:bold;margin-bottom:0.5em;}
+ul {margin:0.4em 0 0.7em 1em;} li {margin-bottom:0.2em;}
+@media(max-width:700px){.container{padding:1.1em 0.3em;}.main-title{font-size:1.5em;}}
+</style>
+<script>
+function toggleQA(id){
+  var cont = document.getElementById(id);
+  var arrow = document.getElementById(id + 'arrow');
+  if (cont.style.display === "block") {
+    cont.style.display = "none";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    cont.style.display = "block";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="main-title">機關責任等級分級 FAQ</div>
+    <button class="return-btn" onclick="window.location.href='index.html'">返回問題分類</button>
+  </div>
+<!-- Q1 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa1')">Q1：資安法的責任等級如何分級？各級有何差異？<span class="arrow" id="qa1arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa1">
+      <div class="qa-subsection">
+      <ul>
+        <li><b>A級：</b> 關鍵基礎設施、國家安全機關。</li>
+        <li><b>B級：</b> 中央二級機關、重要公營事業、直轄市政府。</li>
+        <li><b>C級：</b> 中央三級機關、一般縣市政府及重要財團法人。</li>
+        <li><b>D級：</b> 鄉鎮市區公所、小型單位。</li>
+        <li><b>E級：</b> 規模小、業務單純等機關(構)。</li>
+      </ul>
+      </div>
+      <div class="qa-subsection yellow">
+        <div class="subtitle">資安要求差異：</div>
+        包含資安長設置、專責單位人力、預算比例、演練與稽核頻率等。
+      </div>
+    </div>
+  </div>
+  <!-- Q2-Q11同前格式填充即可略 -->
+</div>
+</body>
+</html>

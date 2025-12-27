@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>納管對象及範圍 FAQ</title>
+<style>
+body { font-family:"微軟正黑體", Arial, sans-serif; background:#f7f8fc;}
+.container {max-width:990px;margin:38px auto 0 auto;background:#fff;border-radius:24px;box-shadow:0 2px 18px #e7eaf3;padding:2.8em 2em;}
+.topbar {display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6em;}
+.main-title {font-size:2.4em;font-weight:bold;color:#2266b4;}
+.return-btn {background:#2266b4;padding:0.88em 2.2em;border-radius:10px;color:#fff;font-size:1.13em;border:none;cursor:pointer;font-weight:bold;box-shadow:0 2px 10px #dedede;}
+.return-btn:hover{background:#194b88;}
+.qa-box {margin-bottom:1.25em;}
+.qa-title {font-size:1.2em;font-weight:bold;background:#2266b4;color:#fff;display:flex;align-items:center;border-radius:10px 10px 0 0;padding:0.95em 1.2em;cursor:pointer;}
+.qa-title .arrow {margin-left:auto;font-size:1.6em;}
+.qa-content {padding:1.3em 2em 1em 2em;background:#f6fafe;border-radius:0 0 12px 12px;display:none;}
+.qa-section {background:#e7f3fe;border-radius:6px;padding:1em;margin-bottom:12px;border-left:4px solid #6997ef;}
+.qa-section.green {background:#d5f5e7;border-left-color:#53ca87;}
+.qa-section.yellow {background:#fff6da;border-left-color:#e7b140;}
+.qa-section.pink {background:#fbe7ef;border-left-color:#d66aa5;}
+.qa-section .subtitle {font-weight:bold;margin-bottom:0.50em;}
+ul {margin: 0.4em 0 0.75em 1em;} li {margin-bottom:0.2em;}
+@media(max-width:700px){.container{padding:1.1em 0.3em;}.main-title{font-size:1.5em;}}
+</style>
+<script>
+function toggleQA(id){
+  var cont = document.getElementById(id);
+  var arrow = document.getElementById(id + 'arrow');
+  if (cont.style.display === "block") {
+    cont.style.display = "none";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    cont.style.display = "block";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="main-title">納管對象及範圍 FAQ</div>
+    <button class="return-btn" onclick="window.location.href='index.html'">返回問題分類</button>
+  </div>
+  <!-- Q1 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa1')">
+      Q1  資安法的納管對象有哪些？
+      <span class="arrow" id="qa1arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa1">
+      <div class="qa-section">
+        <span class="subtitle">納管主要分類：</span>
+        <ul>
+          <li>中央、地方各級公務機關</li>
+          <li>特定非公務機關（如部分公營事業、法人）</li>
+          <li>關鍵基礎設施提供者（主管機關指定）</li>
+        </ul>
+      </div>
+      <div class="qa-section yellow">
+        <span class="subtitle">補充說明：</span>
+        納管名單依年度檢核公告，如有疑問可洽詢資通安全主管機關查核。
+      </div>
+    </div>
+  </div>
+  <!-- Q2 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa2')">
+      Q2  哪些單位屬於公務機關納管範疇？
+      <span class="arrow" id="qa2arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa2">
+      <div class="qa-section green">部會、行政機關、民意機關、公立學校、附屬機構均屬納管公務機關範疇。</div>
+    </div>
+  </div>
+  <!-- Q3 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa3')">
+      Q3  何謂特定非公務機關？
+      <span class="arrow" id="qa3arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa3">
+      <div class="qa-section">
+        係指政府具有控制權或法律授權之法人、事業、公營事業或重大專案法人，認定標準由主管機關公告。
+      </div>
+      <div class="qa-section green">
+        <span class="subtitle">典型案例：</span>
+        <ul>
+          <li>台電、中油、台水、台菸</li>
+          <li>中華郵政、台灣菸酒</li>
+          <li>中華電信（政府持股35%具實質影響力）</li>
+        </ul>
+      </div>
+      <div class="qa-section yellow">
+        <span class="subtitle">判斷重點：</span>
+        除持股比例亦需看管理權，政府派任董事或監事即使50%未達亦可能納管。
+      </div>
+      <div class="qa-section pink">
+        <span class="subtitle">實務建議：</span>
+        有疑慮可洽資訊部或主管機關協助確認是否屬指定納管對象。
+      </div>
+    </div>
+  </div>
+  <!-- Q4 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa4')">
+      Q4  關鍵基礎設施納管產業範圍？
+      <span class="arrow" id="qa4arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa4">
+      <div class="qa-section green">
+        電力、水資源、通訊、交通運輸、醫療、金融等產業設施。
+      </div>
+      <div class="qa-section yellow">
+        主管機關每年公告產業範圍，特殊產業或新興設施亦得納管。
+      </div>
+    </div>
+  </div>
+  <!-- Q5 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa5')">
+      Q5  納管機關是否須定期申報？
+      <span class="arrow" id="qa5arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa5">
+      <div class="qa-section">所有納管機關須每年向主管機關申報更新納管名冊及基本資料。</div>
+    </div>
+  </div>
+  <!-- Q6 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa6')">
+      Q6  納管範圍是否包含外包委託單位？
+      <span class="arrow" id="qa6arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa6">
+      <div class="qa-section">委外或受託處理政府核心業務且涉及民眾資料者，原則上也納入資安納管。</div>
+    </div>
+  </div>
+  <!-- Q7 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa7')">
+      Q7  公務機關所屬附屬單位納管方式？
+      <span class="arrow" id="qa7arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa7">
+      <div class="qa-section green">附屬單位（如學校等）由上級機關統一彙報並納入年度檢核納管。</div>
+    </div>
+  </div>
+  <!-- Q8 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa8')">
+      Q8  非公務機關納管判定依據？
+      <span class="arrow" id="qa8arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa8">
+      <div class="qa-section">依主管機關公告、政府持股或管理權、法律授權或影響力程度。</div>
+    </div>
+  </div>
+  <!-- Q9 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa9')">
+      Q9  納管單位撤銷或合併程序？
+      <span class="arrow" id="qa9arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa9">
+      <div class="qa-section yellow">須於一個月內由主管機關調整名冊公告異動。</div>
+    </div>
+  </div>
+  <!-- Q10 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa10')">
+      Q10  納管名冊及範圍是否都會調整？
+      <span class="arrow" id="qa10arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa10">
+      <div class="qa-section green">每年檢核名單，重大組織異動及新業務會即時更新公告。</div>
+    </div>
+  </div>
+  <!-- Q11 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa11')">
+      Q11  民間單位可否主動申請納管？
+      <span class="arrow" id="qa11arrow">&#9660;</span>
+    </div>
+    <div class="qa-content" id="qa11">
+      <div class="qa-section pink">
+        有社會影響力或政府授權者，得向主管機關申請，由專案審查決定是否納管。
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+

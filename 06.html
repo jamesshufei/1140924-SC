@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>委外派遣及監督 FAQ</title>
+<style>
+body { font-family:"微軟正黑體", Arial, sans-serif; background:#f7f8fc;}
+.container {max-width:990px;margin:38px auto 0 auto;background:#fff;border-radius:24px;box-shadow:0 2px 18px #e7eaf3;padding:2.8em 2em;}
+.topbar {display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6em;}
+.main-title {font-size:2.4em;font-weight:bold;color:#2266b4;}
+.return-btn {background:#2266b4;padding:0.88em 2.2em;border-radius:10px;color:#fff;font-size:1.13em;border:none;cursor:pointer;font-weight:bold;box-shadow:0 2px 10px #dedede;}
+.return-btn:hover{background:#194b88;}
+.qa-box {margin-bottom:1.25em;}
+.qa-title {font-size:1.2em;font-weight:bold;background:#2266b4;color:#fff;display:flex;align-items:center;border-radius:10px 10px 0 0;padding:0.95em 1.2em;cursor:pointer;}
+.qa-title .arrow {margin-left:auto;font-size:1.6em;}
+.qa-content {padding:1.3em 2em 1em 2em;background:#f6fafe;border-radius:0 0 12px 12px;display:none;}
+.qa-section {background:#e7f3fe;border-radius:6px;padding:1em;margin-bottom:12px;border-left:4px solid #6997ef;}
+.qa-section.green {background:#d5f5e7;border-left-color:#53ca87;}
+.qa-section.yellow {background:#fff6da;border-left-color:#e7b140;}
+.qa-section.pink {background:#fbe7ef;border-left-color:#d66aa5;}
+.qa-section .subtitle {font-weight:bold;margin-bottom:0.5em;}
+ul {margin: 0.4em 0 0.75em 1em;} li {margin-bottom:0.2em;}
+@media(max-width:700px){.container{padding:1.1em 0.3em;}.main-title{font-size:1.5em;}}
+</style>
+<script>
+function toggleQA(id){
+  var cont = document.getElementById(id);
+  var arrow = document.getElementById(id + 'arrow');
+  if (cont.style.display === "block") {
+    cont.style.display = "none";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    cont.style.display = "block";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="main-title">委外派遣及監督 FAQ</div>
+    <button class="return-btn" onclick="window.location.href='index.html'">返回問題分類</button>
+  </div>
+  
+  <!-- Q1 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa1')">Q1 委外注意事項何時要納入？<span class="arrow" id="qa1arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa1">
+      <div class="qa-section">資安法施行細則第4條規定，機關應於辦理委外案前，瞭解法規，將資安管理要求納入契約與專案管理，落實法規規範於實際委外流程。</div>
+    </div>
+  </div>
+  <!-- Q2 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa2')">Q2 資安法施行前已存在的委外契約，是否適用委外管理之規定？<span class="arrow" id="qa2arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa2">
+      <div class="qa-section yellow">資安法施行後，應依本法及細則檢視現行委外內容，必要時採專案管理或契約變更方式補強合規。</div>
+    </div>
+  </div>
+  <!-- Q3 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa3')">Q3 受託者是否必須通過第三方驗證？第三方驗證之範圍為何？<span class="arrow" id="qa3arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa3">
+      <div class="qa-section green">受託者應具備完善資通安全管理措施或通過第三方驗證，驗證範圍包含業務程序、人員、設備、環境等。</div>
+      <div class="qa-section pink">機關得綜合委託規模、內容、防護需求等綜合考量適用之驗證或管控措施。</div>
+    </div>
+  </div>
+  <!-- Q4 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa4')">Q4 何謂完善的資通安全管理措施？<span class="arrow" id="qa4arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa4">
+      <div class="qa-section">除依機關自定要求外，可於招標、採購納入個案判斷並列評分項，要求廠商環境、程式、監控等均有安全控管，採購不同業務可依 CNS 27001 或 ISO 27001的要求審視之。</div>
+    </div>
+  </div>
+  <!-- Q5 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa5')">Q5 如何判斷廠商資通安全管理措施是否「完善」，由誰判斷？<span class="arrow" id="qa5arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa5">
+      <div class="qa-section yellow">依業務防護需求及等級，由機關招標文件明示，建議跨單位、資訊及資安專人統籌規劃、執行。</div>
+    </div>
+  </div>
+  <!-- Q6 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa6')">Q6 若廠商通過第三方驗證，如何判斷辦理受託業務之程序及環境有無含括在驗證範圍？<span class="arrow" id="qa6arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa6">
+      <div class="qa-section">須查明驗證範圍是否涵蓋所委託業務之全部面向，並透過稽核方式確認維運及履約狀況。招標文件建議標明驗證與查核要求。</div>
+    </div>
+  </div>
+  <!-- Q7 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa7')">Q7 委外客製化開發資通系統應如何執行安全性檢測？<span class="arrow" id="qa7arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa7">
+      <div class="qa-section green">委外客製化系統應提供安全性檢測證明，包含源碼掃描、弱點掃描、滲透測試並取得第三方檢測證書。</div>
+      <div class="qa-section yellow">金額逾千萬或核心系統委外，須第三方檢測，機關自行或委外，必須完成安全性檢測。</div>
+    </div>
+  </div>
+  <!-- Q8 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa8')">Q8 若單純採購套裝軟硬體設備，此類案件是否需廠商通過資安完善管理措施/第三方驗證？<span class="arrow" id="qa8arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa8">
+      <div class="qa-section">如受託業務相關程序/環境均在機關，無須強制廠商資安管理或第三方驗證，但仍須評估供應商之潛在風險，補強防護。</div>
+    </div>
+  </div>
+  <!-- Q9 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa9')">Q9 金額達新臺幣千萬元以上委託案的適用範圍？<span class="arrow" id="qa9arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa9">
+      <div class="qa-section pink">委託金額達新臺幣一千萬元以上，包括軟、硬體、服務，均須納入資安法規範，不限單一類型。</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

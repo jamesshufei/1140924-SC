@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>維護計畫摘要 FAQ</title>
+<style>
+body { font-family:"微軟正黑體", Arial, sans-serif; background:#f7f8fc;}
+.container {max-width:990px;margin:38px auto 0 auto;background:#fff;border-radius:24px;box-shadow:0 2px 18px #e7eaf3;padding:2.8em 2em;}
+.topbar {display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6em;}
+.main-title {font-size:2.4em;font-weight:bold;color:#2266b4;}
+.return-btn {background:#2266b4;padding:0.88em 2.2em;border-radius:10px;color:#fff;font-size:1.13em;border:none;cursor:pointer;font-weight:bold;box-shadow:0 2px 10px #dedede;}
+.return-btn:hover{background:#194b88;}
+.qa-box {margin-bottom:1.25em;}
+.qa-title {font-size:1.2em;font-weight:bold;background:#2266b4;color:#fff;display:flex;align-items:center;border-radius:10px 10px 0 0;padding:0.95em 1.2em;cursor:pointer;}
+.qa-title .arrow {margin-left:auto;font-size:1.6em;}
+.qa-content {padding:1.3em 2em 1em 2em;background:#f6fafe;border-radius:0 0 12px 12px;display:none;}
+.qa-section {background:#e7f3fe;border-radius:6px;padding:1em;margin-bottom:12px;border-left:4px solid #6997ef;}
+.qa-section.green {background:#d5f5e7;border-left-color:#53ca87;}
+.qa-section.yellow {background:#fff6da;border-left-color:#e7b140;}
+.qa-section.pink {background:#fbe7ef;border-left-color:#d66aa5;}
+.qa-section .subtitle {font-weight:bold;margin-bottom:0.5em;}
+ul {margin: 0.4em 0 0.75em 1em;} li {margin-bottom:0.2em;}
+@media(max-width:700px){.container{padding:1.1em 0.3em;}.main-title{font-size:1.5em;}}
+</style>
+<script>
+function toggleQA(id){
+  var cont = document.getElementById(id);
+  var arrow = document.getElementById(id + 'arrow');
+  if (cont.style.display === "block") {
+    cont.style.display = "none";
+    arrow.innerHTML = "&#9660;";
+  } else {
+    cont.style.display = "block";
+    arrow.innerHTML = "&#9650;";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="main-title">維護計畫摘要 FAQ</div>
+    <button class="return-btn" onclick="window.location.href='index.html'">返回問題分類</button>
+  </div>
+  <!-- Q1 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa1')">Q1 維護計畫需包含哪些基本內容？<span class="arrow" id="qa1arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa1">
+      <div class="qa-section"><span class="subtitle">基本內容：</span>包含資安政策目標、組織架構、資安管理責任分工、年度推動計畫等。</div>
+      <div class="qa-section green"><span class="subtitle">補充說明：</span>應明定各級管理人員責任、跨部門協調事項、年度資安工作重點。</div>
+    </div>
+  </div>
+  <!-- Q2 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa2')">Q2 維護計畫需由誰核定？<span class="arrow" id="qa2arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa2">
+      <div class="qa-section yellow">應由機關首長核定，確保政策合規並落實推動。</div>
+    </div>
+  </div>
+  <!-- Q3 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa3')">Q3 維護計畫報備流程為何？<span class="arrow" id="qa3arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa3">
+      <div class="qa-section">核定後須報備主管機關，並建檔留存以供查核。</div>
+    </div>
+  </div>
+  <!-- Q4 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa4')">Q4 維護計畫內容每年要更新嗎？<span class="arrow" id="qa4arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa4">
+      <div class="qa-section green">需依實際運作及最新業務狀況調整，至少年度檢核一次。</div>
+    </div>
+  </div>
+  <!-- Q5 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa5')">Q5 機關可否採用同業範本？<span class="arrow" id="qa5arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa5">
+      <div class="qa-section yellow">可參考同業標準及主管機關公布範本，但須依本機關實際業務細節修正補充。</div>
+    </div>
+  </div>
+  <!-- Q6 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa6')">Q6 維護計畫內容是否需公告？<span class="arrow" id="qa6arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa6">
+      <div class="qa-section">主管機關如有公告要求，則依公告方式摘要公布。未公告時可僅報備。</div>
+    </div>
+  </div>
+  <!-- Q7 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa7')">Q7 維護計畫的資安推動重點怎麼訂？<span class="arrow" id="qa7arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa7">
+      <div class="qa-section pink">應依主管機關年度政策方針及本機關實際需求訂定資安推動重點。</div>
+    </div>
+  </div>
+  <!-- Q8 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa8')">Q8 更新維護計畫需重新核定嗎？<span class="arrow" id="qa8arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa8">
+      <div class="qa-section yellow">重大異動或年度更新均須重新核定，確保合規。</div>
+    </div>
+  </div>
+  <!-- Q9 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa9')">Q9 維護計畫更新有沒有限制時程？<span class="arrow" id="qa9arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa9">
+      <div class="qa-section green">原則應於年度結束前完成更新，特殊情況依主管機關通知執行。</div>
+    </div>
+  </div>
+  <!-- Q10 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa10')">Q10 維護計畫列入年度考核內容嗎？<span class="arrow" id="qa10arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa10">
+      <div class="qa-section">維護計畫執行成果及更新記錄，均列入主管機關年度考核事項。</div>
+    </div>
+  </div>
+  <!-- Q11 -->
+  <div class="qa-box">
+    <div class="qa-title" onclick="toggleQA('qa11')">Q11 維護計畫未更新或不符規定有何處分？<span class="arrow" id="qa11arrow">&#9660;</span></div>
+    <div class="qa-content" id="qa11">
+      <div class="qa-section pink">主管機關可限期要求補正，逾期未改正可能依法處罰。</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
